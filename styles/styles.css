@@ -1,0 +1,19 @@
+.wrapper {
+  background-color: aliceblue;
+}
+
+.content {
+  background-color: bisque;
+}
+
+.blocks {
+  background-color: honeydew;
+}
+
+.block {
+  background-color: saddlebrown;
+}
+
+* {
+  padding: 1rem;
+}
