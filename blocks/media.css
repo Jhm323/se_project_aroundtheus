@@ -1,0 +1,23 @@
+@media screen and (max-width: 480px) {
+  .pofile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+  }
+  .profile__add-button {
+    margin: 0;
+    width: 100%;
+  }
+}
