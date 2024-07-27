@@ -5,6 +5,8 @@
   line-height: 29.05px;
   text-align: left;
   margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .card__list {
@@ -14,6 +16,7 @@
   grid-gap: 20px 17px;
   padding: 0;
   margin: 0;
+  max-width: 880px;
 }
 
 .card {
@@ -38,6 +41,9 @@
   justify-content: space-between;
   height: 24px;
   padding-left: 16px;
+}
+
+h2 {
   font-family: Inter;
   font-size: 24px;
   font-weight: 900;
@@ -46,7 +52,13 @@
 }
 
 .card__like-button {
-  background: transparent url(../images/heart.svg) center no-repeat;
-  width: 21px;
-  height: 18px;
+  border: none;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.8;
 }

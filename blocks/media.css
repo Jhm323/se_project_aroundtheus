@@ -1,5 +1,5 @@
 @media screen and (max-width: 480px) {
-  .pofile {
+  .profile {
     flex-direction: column;
     justify-content: center;
     align-items: center;
