@@ -2,3 +2,7 @@
   margin-top: 45px;
   padding: 0;
 }
+
+.header img {
+  max-width: 100%;
+}
