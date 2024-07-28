@@ -54,19 +54,14 @@ h2 {
   text-align: left;
 }
 
-.button {
-  cursor: pointer;
-  padding: 0px;
-  border: white;
-  background-color: white;
-}
-
-.button:hover {
-  opacity: 0.8;
-}
-
-.button card__like-button {
+.card__like-button {
   border: none;
   padding-bottom: 5px;
   border: white;
+  background-color: white;
+  cursor: pointer;
+}
+
+.card__like-button:hover {
+  opacity: 0.8;
 }
