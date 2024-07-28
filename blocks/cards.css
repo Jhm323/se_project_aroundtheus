@@ -7,13 +7,15 @@
   margin-top: 30px;
   display: flex;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 880px;
 }
 
 .card__list {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 282px);
-
   grid-gap: 20px 17px;
   padding: 0;
   margin: 0;
@@ -25,6 +27,7 @@
   flex-direction: column;
   list-style-type: none;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .card__image {
@@ -41,7 +44,6 @@
   align-items: center;
   justify-content: space-between;
   height: 24px;
-  padding-left: 16px;
 }
 
 h2 {
@@ -52,18 +54,19 @@ h2 {
   text-align: left;
 }
 
-.card__like-button {
-  border: none;
-}
-
 .button {
   cursor: pointer;
+  padding: 0px;
+  border: white;
+  background-color: white;
 }
 
 .button:hover {
   opacity: 0.8;
 }
 
-.card__like-button {
-  background-color: transparent;
+.button card__like-button {
+  border: none;
+  padding-bottom: 5px;
+  border: white;
 }

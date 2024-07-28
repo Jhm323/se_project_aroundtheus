@@ -12,16 +12,74 @@
     justify-content: center;
   }
 
+  .profile__title {
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 26.63px;
+    text-align: center;
+    width: 196px;
+    height: 22px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .profile__edit-button {
+    margin: 0px;
+    margin-left: 10px;
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__edit-icon {
+    width: 7.5px;
+    height: 7.5px;
+    margin: auto;
+    padding-bottom: 7px;
+    padding-right: 7px;
+  }
+
   .profile__description {
     width: 100%;
     text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    height: 14px;
+    text-align: center;
+    padding-bottom: 36px;
+    padding-top: 14px;
   }
   .profile__add-button {
     margin: 0;
-    width: 100%;
+    width: 282px;
+    height: 50px;
+    top: 362px;
+    left: 19px;
+    gap: 0px;
+    border-radius: 2px 0px 0px 0px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+  }
+  .profile__add-icon {
+    height: 16px;
+    width: 16px;
   }
 
   .profile__image {
     margin: 0 auto;
+  }
+  .footer {
+    max-width: 282px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .footer {
+    max-width: 581px;
+    margin: auto;
   }
 }

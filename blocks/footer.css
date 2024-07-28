@@ -6,4 +6,6 @@
   color: #545454;
   background-color: black;
   margin-left: 30px;
+  margin: auto;
+  max-width: 880px;
 }

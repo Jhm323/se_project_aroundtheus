@@ -22,19 +22,31 @@
 }
 
 .profile__title {
+  font-family: inter;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
   grid-area: title;
   margin: 0;
   padding: 0px;
+  width: 375px;
+  padding-right: 15px;
 }
 
 .profile__edit-button {
-  background: transparent url(../images/edit-icon.png) center no-repeat;
   height: 24px;
   width: 24px;
   grid-area: button;
+  background-color: black;
+  margin: auto;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  border-radius: 1px;
+  border-color: white;
+}
+
+.profile__edit-icon {
+  margin: auto;
 }
 
 .profile__description {
@@ -48,9 +60,16 @@
 .profile__add-button {
   background-color: black;
   margin-left: auto;
-  padding: 14px 64px;
-  border: 2px solid white;
-  border-radius: 2px;
+  padding: 0px 64px;
   color: white;
   text-align: center;
+  border-color: white;
+  border-radius: 2px;
+  height: 50px;
+  width: 150px;
+}
+
+.profile__add-icon {
+  height: 22px;
+  width: 22px;
 }
