@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   align-items: center;
-  padding: 40px 0px 0px 0px;
+  padding: 40px 19px 51px 19px;
 }
 
 .profile__image {
@@ -30,7 +30,11 @@
   margin: 0;
   padding: 0px;
   width: 375px;
-  padding-right: 15px;
+  padding-right: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 415px;
 }
 
 .profile__edit-button {
@@ -40,10 +44,12 @@
   background-color: black;
   margin: auto;
   gap: 0px;
-  border: 1px 0px 0px 0px;
   border-radius: 1px;
   border-color: white;
   cursor: pointer;
+  background-image: url(../images/edit_icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .profile__edit-button:hover {
@@ -60,19 +66,23 @@
   font-weight: 400;
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 415px;
 }
 
 .profile__add-button {
   background-color: black;
   margin-left: auto;
-  padding: 0px 64px;
-  color: white;
-  text-align: center;
   border-color: white;
   border-radius: 2px;
   height: 50px;
   width: 150px;
   cursor: pointer;
+  background-image: url(../images/add-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .profile__add-button:hover {
