@@ -1,5 +1,7 @@
 .header {
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid;
+  border-bottom-color: #545454;
+  opacity: 0.7;
 }
 
 .header__image {

@@ -22,14 +22,14 @@
 }
 
 .profile__title {
-  font-family: inter;
+  font-family: inter, Arial, sans-serif;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
   grid-area: title;
   margin: 0;
   padding: 0px;
-  width: 375px;
+  max-width: 375px;
   padding-right: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -44,7 +44,8 @@
   background-color: black;
   margin: auto;
   gap: 0px;
-  border-radius: 1px;
+  border-width: 1px;
+  border-style: solid;
   border-color: white;
   cursor: pointer;
   background-image: url(../images/edit_icon.svg);
@@ -53,7 +54,7 @@
 }
 
 .profile__edit-button:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .profile__edit-icon {
@@ -76,7 +77,8 @@
   background-color: black;
   margin-left: auto;
   border-color: white;
-  border-radius: 2px;
+  border-width: 2px;
+  border-style: solid;
   height: 50px;
   width: 150px;
   cursor: pointer;
@@ -86,7 +88,7 @@
 }
 
 .profile__add-button:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .profile__add-icon {

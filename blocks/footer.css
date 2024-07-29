@@ -1,5 +1,5 @@
-.footer {
-  font-family: Inter;
+.footer__copyright {
+  font-family: Inter, Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 21.78px;
