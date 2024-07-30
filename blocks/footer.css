@@ -10,3 +10,38 @@
   max-width: 880px;
   padding-top: 67px;
 }
+
+@media screen and (max-width: 425px) {
+  .footer {
+    font-size: 14px;
+    max-width: 282px;
+    margin: 0;
+  }
+
+  .footer__copyright {
+    padding-top: 48px;
+    padding-bottom: 36px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .footer {
+    max-width: 282px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .footer {
+    max-width: 581px;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 917px) {
+  .footer {
+    max-width: 581px;
+    margin: auto;
+  }
+}

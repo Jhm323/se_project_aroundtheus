@@ -1,3 +1,8 @@
+.page {
+  background-color: black;
+  color: white;
+}
+
 .page__section {
   max-width: 880px;
   width: 100%;
@@ -12,4 +17,18 @@
   background-color: black;
   font-family: Inter, Arial, Helvetica, sans-serif;
   padding: 0;
+}
+
+@media screen and (max-width: 425px) {
+  .page {
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .page {
+    background-color: black;
+    color: white;
+  }
 }
