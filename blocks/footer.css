@@ -5,29 +5,15 @@
   line-height: 21.78px;
   color: #545454;
   background-color: black;
-  margin-left: 30px;
   margin: auto;
   max-width: 880px;
   padding-top: 67px;
+  padding-bottom: 60px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 917px) {
   .footer {
-    font-size: 14px;
-    max-width: 282px;
-    margin: 0;
-  }
-
-  .footer__copyright {
-    padding-top: 48px;
-    padding-bottom: 36px;
-    font-size: 14px;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .footer {
-    max-width: 282px;
+    max-width: 581px;
     margin: auto;
   }
 }
@@ -39,9 +25,24 @@
   }
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 720px) {
   .footer {
-    max-width: 581px;
+    max-width: 282px;
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    font-size: 14px;
+    width: 282px;
+    height: 14px;
+    margin-left: 19px;
+  }
+
+  .footer__copyright {
+    padding-top: 48px;
+    padding-bottom: 36px;
+    font-size: 14px;
   }
 }
