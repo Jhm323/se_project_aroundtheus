@@ -28,10 +28,8 @@
   font-weight: 500;
   grid-area: title;
   margin: 0;
-  padding: 0px;
   max-width: 375px;
-  padding-right: 18px;
-  text-overflow: ellipsis;
+  padding: 0 18px 16px 0;
   white-space: nowrap;
   overflow: hidden;
   max-width: 415px;
@@ -42,7 +40,7 @@
   width: 24px;
   grid-area: button;
   background-color: black;
-  margin: auto;
+  margin: 15px 0 0 18px;
   gap: 0px;
   border-width: 1px;
   border-style: solid;
