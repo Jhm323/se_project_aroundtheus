@@ -33,6 +33,7 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 415px;
+  text-overflow: ellipsis;
 }
 
 .profile__edit-button {
@@ -124,7 +125,7 @@
   }
 
   .profile__description {
-    max-width: 100%;
+    max-width: 282px;
     font-size: 14px;
     line-height: 16.94px;
     text-align: center;
@@ -134,9 +135,6 @@
     margin: 0;
     width: 282px;
     height: 50px;
-    top: 362px;
-    left: 19px;
-    gap: 0px;
     border-radius: 2px 0px 0px 0px;
   }
 
@@ -155,12 +153,12 @@
   .profile {
     padding: 42px 0px 36px 0px;
     max-width: 282px;
-    height: 286px;
+    min-height: 286px;
   }
 
   .profile__info {
     max-width: 282px;
-    max-height: 50px;
+    min-height: 50px;
     padding-bottom: 36px;
     grid-template-columns: auto;
   }
