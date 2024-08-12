@@ -34,12 +34,11 @@ const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 
 profileEditBtn.addEventListener("click", () => {
-  profileEditModal.classList.add("modal__opened");
+  profileEditModal.classList.add("modal_opened");
 });
 
 const modalCloseBtn = document.querySelector("#modal-close-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
 
 modalCloseBtn.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal__opened");
+  profileEditModal.classList.remove("modal_opened");
 });
