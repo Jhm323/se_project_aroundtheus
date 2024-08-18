@@ -40,7 +40,7 @@ const profileDescriptionInput = document.querySelector(
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const modalCloseBtn = document.querySelector("#modal-close-button");
-const cardListEl = document.querySelector(".card__list");
+const cardsListEl = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
