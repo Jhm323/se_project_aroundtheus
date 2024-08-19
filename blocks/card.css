@@ -9,6 +9,8 @@
 .card__image {
   padding: 0px;
   object-fit: cover;
+  width: 282px;
+  height: 282px;
 }
 
 .card__description {
