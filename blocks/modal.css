@@ -24,7 +24,6 @@
   padding: 36px;
   border-radius: 10px;
   position: relative;
-  padding: 19px;
 }
 
 .modal__close {
@@ -49,6 +48,9 @@
   font-weight: 900;
   line-height: 29.05px;
   text-align: left;
+  width: 330px;
+  height: 23px;
+  margin: 0px;
 }
 
 .modal__form {
@@ -62,6 +64,7 @@
 }
 
 .modal__input:first-of-type {
+  margin-top: 54px;
   margin-bottom: 30px;
   min-height: 27px;
   border: transparent;
@@ -97,6 +100,11 @@
   font-weight: 400;
   line-height: 21.78px;
   text-align: center;
+  cursor: pointer;
+}
+
+.modal__button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 630px) {
