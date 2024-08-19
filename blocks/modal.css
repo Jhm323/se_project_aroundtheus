@@ -9,8 +9,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  min-width: 430px;
-  min-height: 330px;
   margin: 0 auto;
   display: none;
 }
@@ -114,6 +112,7 @@
   .modal__container {
     max-width: 282px;
     max-height: 322px;
+    padding: 25px, 22px;
   }
 
   .modal__close {
@@ -142,7 +141,7 @@
 
   .modal__button {
     max-width: 238px;
-    max-height: 36px;
+    max-height: 46px;
     margin: auto;
   }
 }
