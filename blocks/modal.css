@@ -112,7 +112,7 @@
   .modal__container {
     max-width: 282px;
     max-height: 322px;
-    padding: 25px, 22px;
+    padding: 25px 22px;
   }
 
   .modal__close {
