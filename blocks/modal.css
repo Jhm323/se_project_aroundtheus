@@ -116,13 +116,16 @@
   }
 
   .modal__close {
-    top: -60;
+    top: -60px;
     right: 0px;
+    width: 26px;
+    height: 26px;
   }
 
   .modal__heading {
     max-width: 238px;
     max-height: 22px;
+    font-size: 18px;
   }
 
   .modal__form {
@@ -133,10 +136,12 @@
   .modal__input:first-of-type {
     max-width: 238px;
     max-height: 27px;
+    margin-top: 75px;
   }
   .modal__input:last-of-type {
     max-width: 238px;
     max-height: 27px;
+    margin-bottom: 45px;
   }
 
   .modal__button {
