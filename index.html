@@ -82,24 +82,24 @@
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">New Place</p>
+        <p class="modal__heading">New place</p>
         <form class="modal__form" id="add-card-form">
           <input
             type="text"
             id="add-card-input-title"
             name="title"
             class="modal__input"
-            placeholder="title"
+            placeholder="Title"
           />
           <input
             type="text"
             id="add-card-input-url"
             name="description"
             class="modal__input"
-            placeholder="image URL"
+            placeholder="Image link"
           />
 
-          <button class="modal__button">Save</button>
+          <button class="modal__button">Create</button>
         </form>
       </div>
     </div>
@@ -107,6 +107,7 @@
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button class="card__trash-button" type="button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>

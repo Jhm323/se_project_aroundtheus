@@ -13,6 +13,18 @@
   height: 282px;
 }
 
+.card__trash-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url(../images/Trash.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 18px;
+  width: 19px;
+  padding: 0px;
+}
+
 .card__description {
   display: flex;
   background-color: #fff;
@@ -43,6 +55,10 @@
   background-position: center;
   height: 18px;
   width: 21px;
+}
+
+.card__like-button_active {
+  background-image: url(../images/like-button-active.jpg);
 }
 
 .card__like-button:hover {
