@@ -4,6 +4,8 @@
   list-style-type: none;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
+  display: inline-block;
 }
 
 .card__image {
@@ -13,16 +15,27 @@
   height: 282px;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
+
 .card__trash-button {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  background-image: url(../images/Trash.jpg);
+  background-image: url(../images/Trash.svg);
   background-repeat: no-repeat;
   background-position: center;
   height: 18px;
   width: 19px;
   padding: 0px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card__trash-button:hover {
+  background-image: url(../images/Trash-active.svg);
 }
 
 .card__description {
