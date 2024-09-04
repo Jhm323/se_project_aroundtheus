@@ -36,8 +36,8 @@ const cardTemplate =
 
 const cardsList = document.querySelector(".cards__list");
 const editProfilemodal = document.querySelector("#profile-edit-modal");
-const profileForm = document.querySelector("#profile-form");
-const addNewCardFrom = document.querySelector("#add-card-form");
+const profileForm = document.forms["profile-form"];
+const addNewCardFrom = document.forms["add-card-form"];
 
 // Buttons and Modals
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -73,6 +73,9 @@ const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 const previewModalCaption = document.querySelector("#modal-title-preview");
 const previewModalImage = document.querySelector(".modal__image-preview");
 const previewModal = document.querySelector("#preview-image-modal");
+const previewModalCloseButton = previewModal.querySelector(
+  "#modal-close-button"
+);
 
 // funks
 function closeModal(modal) {
@@ -83,15 +86,15 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
 }
 
-function handleProfileEditSubmit(Event) {
-  Event.preventDefault();
+function handleProfileEditSubmit(event) {
+  event.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
   closeModal(profileEditModal);
 }
 
-function handleAddNewCardSubmit(Event) {
-  Event.preventDefault();
+function handleAddNewCardSubmit(event) {
+  event.preventDefault();
   const cardData = {
     name: addNewCardInputTitle.value,
     link: addNewCardInputUrl.value,
@@ -111,7 +114,7 @@ function getCardElement(data) {
   const trashButton = cardElement.querySelector(".card__trash-button");
 
   trashButton.addEventListener("click", () => {
-    cardElement.remove(cardElement);
+    cardElement.remove();
   });
 
   // ==>PreviewImageModal
@@ -121,14 +124,6 @@ function getCardElement(data) {
     previewModalCaption.textContent = data.name;
     openModal(previewModal);
   });
-
-  const previewModalCloseButton = previewModal.querySelector(
-    "#modal-close-button"
-  );
-
-  previewModalCloseButton.addEventListener("click", () =>
-    closeModal(previewModal)
-  );
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
@@ -140,6 +135,10 @@ function getCardElement(data) {
 
   return cardElement;
 }
+
+previewModalCloseButton.addEventListener("click", () =>
+  closeModal(previewModal)
+);
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
@@ -158,3 +157,12 @@ initialCards.forEach((cardData) => {
   const newCard = getCardElement(cardData);
   cardsList.prepend(newCard);
 });
+
+// // The function accepts a card object and a method of adding to the section
+// // The method is initially `prepend`, but you can pass `append`
+// function renderCard(item, method = "prepend") {
+
+//   const cardElement = getCardElement(item);
+//   // Add the card into the section using the method
+//   cardsList[ method ](cardElement);
+// }
