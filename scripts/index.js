@@ -118,7 +118,7 @@ function getCardElement(data) {
   cardImage.addEventListener("click", () => {
     previewModalImage.src = data.link;
     previewModalImage.alt = data.name;
-    previewModalCaption.textcontent = data.name;
+    previewModalCaption.textContent = data.name;
     openModal(previewModal);
   });
 
