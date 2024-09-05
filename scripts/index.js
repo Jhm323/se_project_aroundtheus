@@ -93,20 +93,11 @@ function handleProfileEditSubmit(event) {
   closeModal(profileEditModal);
 }
 
-// ============>I'm waiting to talk to a tutor about how to fill the profile input value<============
 function openProfileEditModal() {
-  const profileData = {
-    name: profileTitle,
-    bio: profileDescription,
-  };
-
-  const nameInput = profileForm.querySelector("#profile__title-input");
-  const bioInput = profileForm.querySelector("#profile__description-input");
-
-  nameInput.value = profileData.name;
-  bioInput.value = profileData.bio;
+  nameInput.value = profileTitle.textContent;
+  bioInput.value = profileDescription.textContent;
 }
-// =========================================><===============================================================
+
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
   const cardData = {
@@ -132,7 +123,6 @@ function getCardElement(data) {
     cardElement.remove();
   });
 
-  // ==>PreviewImageModal
   cardImage.addEventListener("click", () => {
     previewModalImage.src = data.link;
     previewModalImage.alt = data.name;
@@ -161,7 +151,10 @@ addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
-profileEditButton.addEventListener("click", () => openModal(profileEditModal));
+profileEditButton.addEventListener("click", () => {
+  openModal(profileEditModal);
+  openProfileEditModal();
+});
 
 addNewCardModalCloseButton.addEventListener("click", () =>
   closeModal(addNewCardModal)
