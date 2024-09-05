@@ -144,13 +144,13 @@ function getCardElement(data) {
 previewModalCloseButton.addEventListener("click", () =>
   closeModal(previewModal)
 );
+// profileModalCloseButton.addEventListener("click", () =>
+//   closeModal(profileEditModal)
+// );
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
 
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
 profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
   openProfileEditModal();
