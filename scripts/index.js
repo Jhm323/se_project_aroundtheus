@@ -60,7 +60,7 @@ const cardTitle = document.querySelector(".card__title");
 const cardImage = document.querySelector(".card__image");
 
 const nameInput = profileForm.querySelector("#profile__title-input");
-const jobInput = profileForm.querySelector("#profile__description-input");
+const bioInput = profileForm.querySelector("#profile__description-input");
 
 const newCardTitleInput = addNewCardFrom.querySelector("#add-card-input-title");
 const newCardUrlInput = addNewCardFrom.querySelector("#add-card-input-url");
@@ -89,10 +89,24 @@ function openModal(modal) {
 function handleProfileEditSubmit(event) {
   event.preventDefault();
   profileTitle.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
+  profileDescription.textContent = bioInput.value;
   closeModal(profileEditModal);
 }
 
+// ============>I'm waiting to talk to a tutor about how to fill the profile input value<============
+function openProfileEditModal() {
+  const profileData = {
+    name: profileTitle,
+    bio: profileDescription,
+  };
+
+  const nameInput = profileForm.querySelector("#profile__title-input");
+  const bioInput = profileForm.querySelector("#profile__description-input");
+
+  nameInput.value = profileData.name;
+  bioInput.value = profileData.bio;
+}
+// =========================================><===============================================================
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
   const cardData = {
@@ -103,6 +117,7 @@ function handleAddNewCardSubmit(event) {
   const newCard = getCardElement(cardData);
   cardsList.prepend(newCard);
   closeModal(addNewCardModal);
+  event.target.reset();
 }
 
 function getCardElement(data) {
