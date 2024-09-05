@@ -35,7 +35,7 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 const cardsList = document.querySelector(".cards__list");
-const editProfilemodal = document.querySelector("#profile-edit-modal");
+const editProfileModal = document.querySelector("#profile-edit-modal");
 const profileForm = document.forms["profile-form"];
 const addNewCardFrom = document.forms["add-card-form"];
 
@@ -62,8 +62,8 @@ const cardImage = document.querySelector(".card__image");
 const nameInput = profileForm.querySelector("#profile__title-input");
 const bioInput = profileForm.querySelector("#profile__description-input");
 
-const newCardTitleInput = addNewCardFrom.querySelector("#add-card-input-title");
-const newCardUrlInput = addNewCardFrom.querySelector("#add-card-input-url");
+// const newCardTitleInput = addNewCardFrom.querySelector("#add-card-input-title");
+// const newCardUrlInput = addNewCardFrom.querySelector("#add-card-input-url");
 
 const addNewCardInputTitle = addNewCardFrom.querySelector(
   "#add-card-input-title"
