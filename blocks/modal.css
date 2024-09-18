@@ -77,6 +77,7 @@
   line-height: 16.94px;
   color: #000;
   text-align: left;
+  position: relative;
 }
 
 .modal__input:last-of-type {
@@ -90,6 +91,7 @@
   line-height: 16.94px;
   color: #000;
   text-align: left;
+  position: relative;
 }
 
 .modal__button {
@@ -129,6 +131,37 @@
   margin: auto;
   padding-top: 10px;
 }
+
+.modal__input-error {
+  display: none;
+}
+
+.modal__input-label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__input_type_error {
+  border-bottom-color: red;
+}
+
+.modal__input-error-active {
+  display: block;
+}
+
+.profile__title-input-error {
+  color: red;
+  position: absolute;
+  top: 86px;
+}
+
+.profile__description-input-error {
+  color: red;
+  position: absolute;
+  top: 86px;
+}
+
 @media screen and (max-width: 730px) {
   .modal__image-preview {
     max-width: 300px;
