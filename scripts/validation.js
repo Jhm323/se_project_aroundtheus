@@ -15,20 +15,22 @@ const config = {
 };
 
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(".$(inputElement.id}-error");
-  inputElement.classlist.add(".modal__input_type-error");
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  console.log(inputElement);
+  inputElement.classList.add(".modal__input_type-error");
   errorElement.textContent = errorMessage;
   errorElement.classList.add("modal__input-error_active");
 };
 
 const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(".$(inputElement.id}-error");
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(".modal__input_type-error");
   errorElement.classList.remove("modal__input-error_active");
   errorElement.textContent = "";
 };
 
 const hasInvalidInput = (inputList) => {
+  console.log("Is this firing");
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
@@ -64,9 +66,11 @@ const setEventListeners = (formElement) => {
 };
 
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".form"));
-
+  const formList = Array.from(document.querySelectorAll(".modal__form"));
+  console.log("Is this firing");
+  console.log(formList);
   formList.forEach((formElement) => {
+    console.log(formElement);
     formElement.addEventListener("submit", (event) => {
       event.preventDefault();
     });
