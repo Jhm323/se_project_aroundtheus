@@ -65,7 +65,7 @@
   flex-direction: column;
 }
 
-.modal__input {
+.form__input {
   border: transparent;
   border-bottom: 1px solid rgb(0 0 0 / 0.2);
   font-family: Inter, Arial, sans-serif;
@@ -78,12 +78,12 @@
   min-height: 27px;
 }
 
-.modal__input:first-of-type {
+.form__input:first-of-type {
   margin-top: 54px;
   margin-bottom: 30px;
 }
 
-.modal__input:last-of-type {
+.form__input:last-of-type {
   margin-bottom: 48px;
 }
 
@@ -125,21 +125,21 @@
   padding-top: 10px;
 }
 
-.modal__input-error {
+.form__input-error {
   display: none;
 }
 
-.modal__input-label {
+.form__input-label {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.modal__input_type_error {
+.form__input_type_error {
   border-bottom-color: red;
 }
 
-.modal__input-error-active {
+.form__input-error-active {
   display: block;
 }
 
@@ -227,12 +227,12 @@
     max-height: 322px;
   }
 
-  .modal__input:first-of-type {
+  .form__input:first-of-type {
     max-width: 238px;
     max-height: 27px;
     margin-top: 75px;
   }
-  .modal__input:last-of-type {
+  .form__input:last-of-type {
     max-width: 238px;
     max-height: 27px;
     margin-bottom: 45px;
