@@ -65,10 +65,7 @@
   flex-direction: column;
 }
 
-.modal__input:first-of-type {
-  margin-top: 54px;
-  margin-bottom: 30px;
-  min-height: 27px;
+.modal__input {
   border: transparent;
   border-bottom: 1px solid rgb(0 0 0 / 0.2);
   font-family: Inter, Arial, sans-serif;
@@ -78,20 +75,16 @@
   color: #000;
   text-align: left;
   position: relative;
+  min-height: 27px;
+}
+
+.modal__input:first-of-type {
+  margin-top: 54px;
+  margin-bottom: 30px;
 }
 
 .modal__input:last-of-type {
   margin-bottom: 48px;
-  min-height: 27px;
-  border: transparent;
-  border-bottom: 1px solid rgb(0 0 0 / 0.2);
-  font-family: Inter, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16.94px;
-  color: #000;
-  text-align: left;
-  position: relative;
 }
 
 .modal__button {
@@ -151,17 +144,48 @@
 }
 
 .profile__title-input-error {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
   color: red;
   position: absolute;
   top: 86px;
 }
 
 .profile__description-input-error {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
   color: red;
   position: absolute;
   top: 86px;
 }
 
+.add-card__title-input-error {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  color: red;
+  position: absolute;
+  top: 86px;
+}
+
+.add-card__description-input-error {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  color: red;
+  position: absolute;
+  top: 86px;
+}
 @media screen and (max-width: 730px) {
   .modal__image-preview {
     max-width: 300px;
