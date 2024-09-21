@@ -48,7 +48,7 @@ const profileTitle = document.querySelector(".profile__title");
 const nameInput = profileForm.querySelector("#profile__title-input");
 const profileDescription = document.querySelector(".profile__description");
 const bioInput = profileForm.querySelector("#profile__description-input");
-const formInputElement = document.querySelector(".form__input");
+const formInputElement = document.querySelector(".modal__input");
 
 // Preview
 const previewModal = document.querySelector("#preview-image-modal");

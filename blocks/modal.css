@@ -65,7 +65,7 @@
   flex-direction: column;
 }
 
-.form__input {
+.modal__input {
   border: transparent;
   border-bottom: 1px solid rgb(0 0 0 / 0.2);
   font-family: Inter, Arial, sans-serif;
@@ -78,12 +78,12 @@
   min-height: 27px;
 }
 
-.form__input:first-of-type {
+.modal__input:first-of-type {
   margin-top: 54px;
   margin-bottom: 30px;
 }
 
-.form__input:last-of-type {
+.modal__input:last-of-type {
   margin-bottom: 48px;
 }
 
@@ -125,21 +125,21 @@
   padding-top: 10px;
 }
 
-.form__input-error {
+.modal__input-error {
   display: none;
 }
 
-.form__input-label {
+.modal__label {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.form__input_type_error {
+.modal__input_type_error {
   border-bottom-color: red;
 }
 
-.form__input-error-active {
+.modal__input-error-active {
   display: block;
 }
 
@@ -165,7 +165,7 @@
   top: 86px;
 }
 
-.add-card__title-input-error {
+.add-card-input-title-error {
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -176,7 +176,7 @@
   top: 86px;
 }
 
-.add-card__description-input-error {
+.add-card-input-url-error {
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -186,6 +186,11 @@
   position: absolute;
   top: 86px;
 }
+
+.form__submit_inactive {
+  opacity: 0.1;
+}
+
 @media screen and (max-width: 730px) {
   .modal__image-preview {
     max-width: 300px;
@@ -227,12 +232,12 @@
     max-height: 322px;
   }
 
-  .form__input:first-of-type {
+  .modal__input:first-of-type {
     max-width: 238px;
     max-height: 27px;
     margin-top: 75px;
   }
-  .form__input:last-of-type {
+  .modal__input:last-of-type {
     max-width: 238px;
     max-height: 27px;
     margin-bottom: 45px;
