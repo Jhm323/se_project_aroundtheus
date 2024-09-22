@@ -128,6 +128,9 @@ function getCardElement(data) {
   const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
 
+  // with . or # - thiese are selectors
+  // if this is just a text = this is class
+
   trashButton.addEventListener("click", () => {
     cardElement.remove();
   });
