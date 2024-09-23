@@ -77,17 +77,17 @@ const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 
 // I open @ the close
 function openModal(modal) {
-  // const overlay = document.querySelector(".overlay");
-  // overlay.classList.add("active");
-  // modal.addEventListener("mousedown", handleModalOverlay);
+  const overlay = document.querySelector(".overlay");
+  overlay.classList.add("active");
+  modal.addEventListener("mousedown", handleModalOverlay);
   document.addEventListener("keydown", handleEscKeyPress);
   modal.classList.add("modal_opened");
 }
 
 function closeModal(modal) {
-  // const overlay = document.querySelector(".overlay");
-  // overlay.classList.remove("active");
-  // modal.removeEventListener("mousedown", handleModalOverlay);
+  const overlay = document.querySelector(".overlay");
+  overlay.classList.remove("active");
+  modal.removeEventListener("mousedown", handleModalOverlay);
   document.removeEventListener("keydown", handleEscKeyPress);
   modal.classList.remove("modal_opened");
 }
@@ -101,11 +101,12 @@ function handleEscKeyPress(event) {
   }
 }
 
-// function handleModalOverlay(event) {
-//   if (event.target.classList.contains('overlay')) {
-//     closeModal();
-//   }
-// }
+function handleModalOverlay(event) {
+  if (event.target.classList.contains("overlay")) {
+    closeModal();
+    console.log(handleModalOverlay);
+  }
+}
 
 // Profile Edit Modal
 profileEditButton.addEventListener("click", () => {
