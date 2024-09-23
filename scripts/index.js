@@ -78,24 +78,31 @@ const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
+
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
+
 // Profile Edit Modal
 profileEditButton.addEventListener("click", () => {
   openModal(profileEditModal);
   openProfileEditModal();
 });
+
 function openProfileEditModal() {
+  // resetValidation(inputErrorClass);
   nameInput.value = profileTitle.textContent;
   bioInput.value = profileDescription.textContent;
 }
+
 function handleProfileEditSubmit(event) {
   event.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = bioInput.value;
   closeModal(profileEditModal);
+  // resetValidation(formElements);
 }
+
 profileForm.addEventListener("submit", handleProfileEditSubmit);
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
@@ -121,6 +128,7 @@ function handleAddNewCardSubmit(event) {
   closeModal(addNewCardModal);
   event.target.reset();
 }
+
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
@@ -151,6 +159,7 @@ function getCardElement(data) {
 
   return cardElement;
 }
+
 addNewCardModalCloseButton.addEventListener("click", () =>
   closeModal(addNewCardModal)
 );
@@ -159,6 +168,37 @@ initialCards.forEach((cardData) => {
   const newCard = getCardElement(cardData);
   cardsList.prepend(newCard);
 });
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  modal.addEventListener("mousedown", handleModalOverlay);
+  document.addEventListener("keydown", handleEscKeyPress);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  modal.removeEventListener("mousedown", handleModalOverlay);
+  document.removeEventListener("keydown", handleEscKeyPress);
+}
+
+function handleEscKeyPress(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
+function handleModalOverlay(event) {
+  if (event.target.classList.contains("overlay")) {
+    closeModal(modalOpened);
+  }
+}
+
+function handleCloseOverlay() {
+  document.addEventListener("click", handleCloseOverlay);
+}
 // // The function accepts a card object and a method of adding to the section
 // // The method is initially `prepend`, but you can pass `append`
 // function renderCard(item, method = "prepend") {

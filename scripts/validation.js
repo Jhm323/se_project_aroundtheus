@@ -1,36 +1,5 @@
 // errors & validation
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  modal.addEventListener("mousedown", handleModalOverlay);
-  document.addEventListener("keydown", handleEscKeyPress);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  modal.removeEventListener("mousedown", handleModalOverlay);
-  document.removeEventListener("keydown", handleEscKeyPress);
-}
-
-function handleEscKeyPress(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
-}
-
-function handleModalOverlay(event) {
-  if (event.target.classList.contains("overlay")) {
-    closeModal(modalOpened);
-  }
-}
-
-function handleCloseOverlay() {
-  document.addEventListener("click", handleCloseOverlay);
-}
-
 function showInputError(
   { inputErrorClass, errorClass },
   formElement,
@@ -39,6 +8,7 @@ function showInputError(
   const errorMessageElement = formElement.querySelector(
     `#${inputElement.id}-error`
   );
+  console.log(errorMessageElement);
   inputElement.classList.add(inputErrorClass);
   errorMessageElement.textContent = inputElement.validationMessage;
   errorMessageElement.classList.add(errorClass);
@@ -103,13 +73,20 @@ function toggleButtonState(inputList, buttonElement) {
 
 const enableValidation = (config) => {
   const formElements = [...document.querySelectorAll(config.formSelector)];
-
+  resetValidation(formElements);
   formElements.forEach((formElement) => {
     formElement.addEventListener("submit", (event) => {
       event.preventDefault();
+      resetValidation(formElements);
     });
 
     setEventListeners(config, formElement);
+  });
+};
+
+const resetValidation = (formElements) => {
+  formElements.forEach((formElement) => {
+    formElement.reset();
   });
 };
 
@@ -117,9 +94,9 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
-  inactiveButtonClass: ".modal__button_disabled",
-  inputErrorClass: ".modal__input_type_error",
-  errorClass: ".modal__input-error_active",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error-active",
 };
 
 enableValidation(config);

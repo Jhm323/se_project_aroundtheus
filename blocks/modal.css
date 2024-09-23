@@ -26,6 +26,10 @@
   padding: 36px;
   border-radius: 10px;
   position: relative;
+  width: 430px;
+  height: 330px;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .modal__close {
@@ -53,6 +57,7 @@
   width: 330px;
   height: 23px;
   margin: 0px;
+  margin-bottom: 54px;
 }
 
 .modal__form {
@@ -61,8 +66,8 @@
   font-weight: 400;
   line-height: 16.94px;
   text-align: left;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .modal__input {
@@ -79,12 +84,12 @@
 }
 
 .modal__input:first-of-type {
-  margin-top: 54px;
-  margin-bottom: 30px;
+  /* margin-top: 54px; */
+  /* margin-bottom: 30px; */
 }
 
 .modal__input:last-of-type {
-  margin-bottom: 48px;
+  /* margin-bottom: 60px; */
 }
 
 .modal__button {
@@ -98,10 +103,14 @@
   line-height: 21.78px;
   text-align: center;
   cursor: pointer;
+  margin-left: 21px;
 }
 
 .modal__button:hover {
   opacity: 0.8;
+}
+.modal__button_disabled {
+  opacity: 0.1;
 }
 
 .modal__container-preview {
@@ -125,14 +134,26 @@
   padding-top: 10px;
 }
 
-/* .modal__input-error {
-  display: none;
+/* .modal__error {
+  color: red;
+  display: flex;
+  text-wrap: wrap;
+} */
+
+.modal__error-active {
+  color: red;
+}
+
+/* .modal__input.modal__error-active {
+  margin-bottom: 30px;
 } */
 
 .modal__label {
   position: relative;
   display: flex;
   flex-direction: column;
+  max-height: 100px;
+  max-width: 400px;
 }
 
 .modal__input_type_error {
@@ -141,6 +162,7 @@
 
 .modal__input-error-active {
   display: block;
+  opacity: 0.3;
 }
 
 .profile__title-input-error {
