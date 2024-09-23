@@ -75,13 +75,37 @@ const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 
 // funks=====================
 
+// I open @ the close
 function openModal(modal) {
+  // const overlay = document.querySelector(".overlay");
+  // overlay.classList.add("active");
+  // modal.addEventListener("mousedown", handleModalOverlay);
+  document.addEventListener("keydown", handleEscKeyPress);
   modal.classList.add("modal_opened");
 }
 
 function closeModal(modal) {
+  // const overlay = document.querySelector(".overlay");
+  // overlay.classList.remove("active");
+  // modal.removeEventListener("mousedown", handleModalOverlay);
+  document.removeEventListener("keydown", handleEscKeyPress);
   modal.classList.remove("modal_opened");
 }
+
+function handleEscKeyPress(event) {
+  if (event.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
+// function handleModalOverlay(event) {
+//   if (event.target.classList.contains('overlay')) {
+//     closeModal();
+//   }
+// }
 
 // Profile Edit Modal
 profileEditButton.addEventListener("click", () => {
@@ -90,7 +114,6 @@ profileEditButton.addEventListener("click", () => {
 });
 
 function openProfileEditModal() {
-  // resetValidation(inputErrorClass);
   nameInput.value = profileTitle.textContent;
   bioInput.value = profileDescription.textContent;
 }
@@ -100,7 +123,6 @@ function handleProfileEditSubmit(event) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = bioInput.value;
   closeModal(profileEditModal);
-  // resetValidation(formElements);
 }
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
@@ -168,42 +190,3 @@ initialCards.forEach((cardData) => {
   const newCard = getCardElement(cardData);
   cardsList.prepend(newCard);
 });
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  modal.addEventListener("mousedown", handleModalOverlay);
-  document.addEventListener("keydown", handleEscKeyPress);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  modal.removeEventListener("mousedown", handleModalOverlay);
-  document.removeEventListener("keydown", handleEscKeyPress);
-}
-
-function handleEscKeyPress(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
-}
-
-function handleModalOverlay(event) {
-  if (event.target.classList.contains("overlay")) {
-    closeModal(modalOpened);
-  }
-}
-
-function handleCloseOverlay() {
-  document.addEventListener("click", handleCloseOverlay);
-}
-// // The function accepts a card object and a method of adding to the section
-// // The method is initially `prepend`, but you can pass `append`
-// function renderCard(item, method = "prepend") {
-
-//   const cardElement = getCardElement(item);
-//   // Add the card into the section using the method
-//   cardsList[ method ](cardElement);
-// }

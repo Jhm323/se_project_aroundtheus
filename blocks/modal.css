@@ -84,12 +84,11 @@
 }
 
 .modal__input:first-of-type {
-  /* margin-top: 54px; */
-  /* margin-bottom: 30px; */
+  margin-bottom: 30px;
 }
 
 .modal__input:last-of-type {
-  /* margin-bottom: 60px; */
+  margin-bottom: 60px;
 }
 
 .modal__button {
@@ -143,10 +142,6 @@
 .modal__error-active {
   color: red;
 }
-
-/* .modal__input.modal__error-active {
-  margin-bottom: 30px;
-} */
 
 .modal__label {
   position: relative;
