@@ -102,9 +102,8 @@ function handleEscKeyPress(event) {
 }
 
 function handleModalOverlay(event) {
-  if (event.target.classList.contains("overlay")) {
-    closeModal();
-    console.log(handleModalOverlay);
+  if (event.target.classList.contains("modal")) {
+    closeModal(event.target);
   }
 }
 
@@ -165,6 +164,7 @@ function getCardElement(data) {
   trashButton.addEventListener("click", () => {
     cardElement.remove();
   });
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
