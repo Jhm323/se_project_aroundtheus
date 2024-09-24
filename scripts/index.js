@@ -77,16 +77,12 @@ const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 
 // I open @ the close
 function openModal(modal) {
-  // const overlay = document.querySelector(".overlay");
-  // overlay.classList.add("active");
   modal.addEventListener("mousedown", handleModalOverlay);
   document.addEventListener("keydown", handleEscKeyPress);
   modal.classList.add("modal_opened");
 }
 
 function closeModal(modal) {
-  // const overlay = document.querySelector(".overlay");
-  // overlay.classList.remove("active");
   modal.removeEventListener("mousedown", handleModalOverlay);
   document.removeEventListener("keydown", handleEscKeyPress);
   modal.classList.remove("modal_opened");
