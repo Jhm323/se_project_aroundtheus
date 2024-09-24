@@ -58,7 +58,7 @@ const previewModalCloseButton = previewModal.querySelector(
   "#modal-close-button"
 );
 
-// card
+// Add Card
 const addNewCardButton = document.querySelector("#new-card-button");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addNewCardFrom = document.forms["add-card-form"];
@@ -136,8 +136,16 @@ previewModalCloseButton.addEventListener("click", () =>
 );
 
 // Add New Card Modal
-addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
+// addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
+
+addNewCardButton.addEventListener("click", () => {
+  openModal(addNewCardModal);
+});
+
 addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
+addNewCardModalCloseButton.addEventListener("click", () =>
+  closeModal(addNewCardModal)
+);
 
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
@@ -183,10 +191,6 @@ function getCardElement(data) {
 
   return cardElement;
 }
-
-addNewCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addNewCardModal)
-);
 
 initialCards.forEach((cardData) => {
   const newCard = getCardElement(cardData);
