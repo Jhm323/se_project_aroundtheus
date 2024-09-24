@@ -76,6 +76,13 @@ const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 // funks=====================
 
 // I open @ the close
+
+const closeButtons = document.querySelectorAll(".modal__close");
+closeButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
+});
+
 function openModal(modal) {
   modal.addEventListener("mousedown", handleModalOverlay);
   document.addEventListener("keydown", handleEscKeyPress);
@@ -110,6 +117,7 @@ profileEditButton.addEventListener("click", () => {
 });
 
 function openProfileEditModal() {
+  openModal(profileEditModal);
   nameInput.value = profileTitle.textContent;
   bioInput.value = profileDescription.textContent;
 }
@@ -121,10 +129,10 @@ function handleProfileEditSubmit(event) {
   closeModal(profileEditModal);
 }
 
-profileForm.addEventListener("submit", handleProfileEditSubmit);
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
+// profileForm.addEventListener("submit", handleProfileEditSubmit);
+// profileModalCloseButton.addEventListener("click", () =>
+//   closeModal(profileEditModal)
+// );
 
 // Preview Modal
 previewModalCloseButton.addEventListener("click", () =>
@@ -134,10 +142,10 @@ previewModalCloseButton.addEventListener("click", () =>
 // Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 
-addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
-addNewCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addNewCardModal)
-);
+// addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
+// addNewCardModalCloseButton.addEventListener("click", () =>
+//   closeModal(addNewCardModal)
+// );
 
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
@@ -188,3 +196,8 @@ initialCards.forEach((cardData) => {
   const newCard = getCardElement(cardData);
   cardsList.prepend(newCard);
 });
+
+// function renderCard(item, method = "prepend") {
+//   const cardElement = getCardElement(item);
+//   cardsList[method](cardElement);
+// }

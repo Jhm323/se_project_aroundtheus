@@ -75,20 +75,13 @@ function toggleButtonState(inputList, buttonElement) {
 
 const enableValidation = (config) => {
   const formElements = [...document.querySelectorAll(config.formSelector)];
-  resetValidation(formElements);
   formElements.forEach((formElement) => {
     formElement.addEventListener("submit", (event) => {
       event.preventDefault();
-      resetValidation(formElements);
+      formElement.reset();
     });
 
     setEventListeners(config, formElement);
-  });
-};
-
-const resetValidation = (formElements) => {
-  formElements.forEach((formElement) => {
-    formElement.reset();
   });
 };
 
