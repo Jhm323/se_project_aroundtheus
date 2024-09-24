@@ -92,6 +92,29 @@
   margin-bottom: 60px;
 }
 
+.modal__input_type_error {
+  border-bottom-color: red;
+}
+
+.modal__error-active {
+  color: red;
+  display: block;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  color: red;
+  position: absolute;
+  top: 36px;
+}
+
+/* .modal__error {
+  color: red;
+  display: flex;
+  text-wrap: wrap;
+} */
+
 .modal__button {
   width: 358px;
   height: 50px;
@@ -134,75 +157,12 @@
   padding-top: 10px;
 }
 
-/* .modal__error {
-  color: red;
-  display: flex;
-  text-wrap: wrap;
-} */
-
-.modal__error-active {
-  color: red;
-}
-
 .modal__label {
   position: relative;
   display: flex;
   flex-direction: column;
   max-height: 100px;
   max-width: 400px;
-}
-
-.modal__input_type_error {
-  border-bottom-color: red;
-}
-
-.modal__input-error-active {
-  display: block;
-  opacity: 0.3;
-}
-
-.profile__title-input-error {
-  font-family: Inter;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14.52px;
-  text-align: left;
-  color: red;
-  position: absolute;
-  top: 86px;
-}
-
-.profile__description-input-error {
-  font-family: Inter;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14.52px;
-  text-align: left;
-  color: red;
-  position: absolute;
-  top: 86px;
-}
-
-.add-card-input-title-error {
-  font-family: Inter;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14.52px;
-  text-align: left;
-  color: red;
-  position: absolute;
-  top: 86px;
-}
-
-.add-card-input-url-error {
-  font-family: Inter;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14.52px;
-  text-align: left;
-  color: red;
-  position: absolute;
-  top: 86px;
 }
 
 .form__submit_inactive {

@@ -138,6 +138,7 @@ previewModalCloseButton.addEventListener("click", () =>
 // Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
+
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
   const cardData = {
