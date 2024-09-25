@@ -65,15 +65,13 @@ const setEventListeners = (config, formElement) => {
 
 function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("modal__button_disabled");
+    buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove("modal__button_disabled");
+    buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 }
-
-/* When you open an add card modal window, toy need to disable the submit button of the form */
 
 const enableValidation = (config) => {
   const formElements = [...document.querySelectorAll(config.formSelector)];

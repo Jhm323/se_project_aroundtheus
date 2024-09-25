@@ -130,22 +130,10 @@ function handleProfileEditSubmit(event) {
 }
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
-
-// Preview Modal
-previewModalCloseButton.addEventListener("click", () =>
-  closeModal(previewModal)
-);
 
 // Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
-
 addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
-addNewCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addNewCardModal)
-);
 
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
@@ -166,9 +154,6 @@ function getCardElement(data) {
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
-
-  // with . or # - thiese are selectors
-  // if this is just a text = this is class
 
   trashButton.addEventListener("click", () => {
     cardElement.remove();
