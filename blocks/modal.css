@@ -78,6 +78,7 @@
   text-align: left;
   position: relative;
   min-height: 27px;
+  margin-bottom: 29px;
 }
 
 .modal__input:first-of-type {
@@ -85,7 +86,7 @@
 }
 
 .modal__input:last-of-type {
-  margin-bottom: 48px;
+  margin: 0;
 }
 
 .modal__input_type_error {
@@ -202,13 +203,13 @@
   .modal__input:first-of-type {
     max-width: 238px;
     max-height: 27px;
-    margin-bottom: 30px;
+    margin-bottom: 37px;
   }
 
   .modal__input:last-of-type {
     max-width: 238px;
     max-height: 27px;
-    margin-bottom: 45px;
+    margin-bottom: 37px;
   }
 
   .modal__button {

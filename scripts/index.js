@@ -73,7 +73,7 @@ const addNewCardInputTitle = addNewCardFrom.querySelector(
 const cardImage = document.querySelector(".card__image");
 const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 
-// funks=====================
+// funks=====================>
 
 // I open @ the close
 
@@ -129,10 +129,10 @@ function handleProfileEditSubmit(event) {
   closeModal(profileEditModal);
 }
 
-// profileForm.addEventListener("submit", handleProfileEditSubmit);
-// profileModalCloseButton.addEventListener("click", () =>
-//   closeModal(profileEditModal)
-// );
+profileForm.addEventListener("submit", handleProfileEditSubmit);
+profileModalCloseButton.addEventListener("click", () =>
+  closeModal(profileEditModal)
+);
 
 // Preview Modal
 previewModalCloseButton.addEventListener("click", () =>
@@ -142,10 +142,10 @@ previewModalCloseButton.addEventListener("click", () =>
 // Add New Card Modal
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 
-// addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
-// addNewCardModalCloseButton.addEventListener("click", () =>
-//   closeModal(addNewCardModal)
-// );
+addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
+addNewCardModalCloseButton.addEventListener("click", () =>
+  closeModal(addNewCardModal)
+);
 
 function handleAddNewCardSubmit(event) {
   event.preventDefault();
