@@ -51,7 +51,7 @@ function enableButton(submitButton, inactiveButtonClass) {
 const setEventListeners = (config, formElement) => {
   const { inputSelector } = config;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
-  const submitButton = formElement.querySelector(".modal__button");
+  const submitButton = formElement.querySelector(config.submitButtonSelector);
 
   toggleButtonState(inputElements, submitButton);
 
@@ -72,6 +72,8 @@ function toggleButtonState(inputList, buttonElement) {
     buttonElement.disabled = false;
   }
 }
+
+/* When you open an add card modal window, toy need to disable the submit button of the form */
 
 const enableValidation = (config) => {
   const formElements = [...document.querySelectorAll(config.formSelector)];
