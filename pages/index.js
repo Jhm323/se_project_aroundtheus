@@ -1,7 +1,7 @@
-// import Card from "./Card.js";
+import Card from "../Card.js";
+import FormValidator from "../FormValidator.js";
 
-// array elements=================
-
+// array elements
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -34,19 +34,22 @@ const initialCards = [
   },
 ];
 
-// const CardData = {
-//   name: "Yosemite Valley",
-//   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-// };
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+};
 
-// const card = new Card(CardData);
+// const card = new Card(cardData, "#card-template");
+// card.getView();
+
+// const FormValidator = ;
+
+// const cardImageElement = document.querySelector("#profile-edit-modal");
 
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-// Buttons and Modals================
-
-// profile
+// profile form const
 const profileForm = document.forms["profile-form"];
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -59,7 +62,7 @@ const profileDescription = document.querySelector(".profile__description");
 const bioInput = profileForm.querySelector("#profile__description-input");
 const formInputElement = document.querySelector(".modal__input");
 
-// Preview
+// Preview modal const
 const previewModal = document.querySelector("#preview-image-modal");
 const previewModalImage = document.querySelector(".modal__image-preview");
 const previewModalCaption = document.querySelector("#modal-title-preview");
@@ -67,7 +70,7 @@ const previewModalCloseButton = previewModal.querySelector(
   "#modal-close-button"
 );
 
-// Add Card
+// Add Card const
 const addNewCardButton = document.querySelector("#new-card-button");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addNewCardFrom = document.forms["add-card-form"];
@@ -82,9 +85,7 @@ const addNewCardInputTitle = addNewCardFrom.querySelector(
 const cardImage = document.querySelector(".card__image");
 const addNewCardInputUrl = addNewCardFrom.querySelector("#add-card-input-url");
 
-// funks=====================>
-
-// I open @ the close
+// functions
 
 const closeButtons = document.querySelectorAll(".modal__close");
 closeButtons.forEach((button) => {
@@ -161,16 +162,16 @@ function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const trashButton = cardElement.querySelector(".card__trash-button");
+  // const likeButton = cardElement.querySelector(".card__like-button");
+  // const trashButton = cardElement.querySelector(".card__trash-button");
 
-  trashButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  // trashButton.addEventListener("click", () => {
+  //   cardElement.remove();
+  // });
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+  // likeButton.addEventListener("click", () => {
+  //   likeButton.classList.toggle("card__like-button_active");
+  // });
 
   cardImage.addEventListener("click", () => {
     previewModalImage.src = data.link;
@@ -195,3 +196,17 @@ initialCards.forEach((cardData) => {
 //   const cardElement = getCardElement(item);
 //   cardsList[method](cardElement);
 // }
+
+const config = {
+  // formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error-active",
+};
+
+const editFormValidator = new FormValidator(config, profileForm);
+editFormValidator.enableValidation();
+const addFormValidator = new FormValidator(config, addNewCardFrom);
+addFormValidator.enableValidation();
