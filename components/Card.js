@@ -22,13 +22,11 @@ export default class Card {
         this._handleDeleteCard();
       });
 
-    //    handleImageclick #preview-image-modal
+    // "#preview-image-modal"
     this._cardImageElement.addEventListener("click", () => {
       this._handleImageClick(this);
     });
   }
-
-  _handlePreviewPicture() {}
 
   _handleDeleteCard() {
     this._cardElement.remove();

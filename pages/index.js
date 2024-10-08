@@ -1,5 +1,5 @@
-import Card from "../Card.js";
-import FormValidator from "../FormValidator.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 // array elements
 const initialCards = [
@@ -162,16 +162,16 @@ function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
-  // const likeButton = cardElement.querySelector(".card__like-button");
-  // const trashButton = cardElement.querySelector(".card__trash-button");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const trashButton = cardElement.querySelector(".card__trash-button");
 
-  // trashButton.addEventListener("click", () => {
-  //   cardElement.remove();
-  // });
+  trashButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
 
-  // likeButton.addEventListener("click", () => {
-  //   likeButton.classList.toggle("card__like-button_active");
-  // });
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
 
   cardImage.addEventListener("click", () => {
     previewModalImage.src = data.link;
@@ -197,6 +197,14 @@ initialCards.forEach((cardData) => {
 //   cardsList[method](cardElement);
 // }
 
+const editFormValidator = new FormValidator(config, profileForm);
+editFormValidator.enableValidation();
+const addFormValidator = new FormValidator(config, addNewCardFrom);
+addFormValidator.enableValidation();
+
+const addFormElement = cardFormModalWindow.querySelector(".modal__form");
+const editFormElement = editFormModalWindow.querySelector(".modal__form");
+
 const config = {
   // formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -206,7 +214,4 @@ const config = {
   errorClass: "modal__error-active",
 };
 
-const editFormValidator = new FormValidator(config, profileForm);
-editFormValidator.enableValidation();
-const addFormValidator = new FormValidator(config, addNewCardFrom);
-addFormValidator.enableValidation();
+enableValidation(config);
