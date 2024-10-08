@@ -70,7 +70,7 @@ const previewModalCloseButton = previewModal.querySelector(
   "#modal-close-button"
 );
 
-// Add Card const
+// Add Card modal const
 const addNewCardButton = document.querySelector("#new-card-button");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addNewCardFrom = document.forms["add-card-form"];
@@ -197,14 +197,6 @@ initialCards.forEach((cardData) => {
 //   cardsList[method](cardElement);
 // }
 
-const editFormValidator = new FormValidator(config, profileForm);
-editFormValidator.enableValidation();
-const addFormValidator = new FormValidator(config, addNewCardFrom);
-addFormValidator.enableValidation();
-
-const addFormElement = cardFormModalWindow.querySelector(".modal__form");
-const editFormElement = editFormModalWindow.querySelector(".modal__form");
-
 const config = {
   // formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -214,4 +206,13 @@ const config = {
   errorClass: "modal__error-active",
 };
 
-enableValidation(config);
+const editFormValidator = new FormValidator(config, profileForm);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(config, addNewCardFrom);
+addFormValidator.enableValidation();
+
+// const addFormElement = cardFormModalWindow.querySelector(".modal__form");
+// const editFormElement = editFormModalWindow.querySelector(".modal__form");
+
+// enableValidation(config);

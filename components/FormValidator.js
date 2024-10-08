@@ -2,7 +2,7 @@ export default class FormValidator {
   constructor(config, formElement) {
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
-    this._inactiveButtonClass = config.inactiveButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClassSelector = config.inputErrorClassSelector;
     this._errorClass = config.errorClass;
 
