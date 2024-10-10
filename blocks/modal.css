@@ -126,11 +126,16 @@
   cursor: pointer;
 }
 
-.modal__button:hover {
-  opacity: 0.8;
-}
 .modal__button_disabled {
   opacity: 0.1;
+}
+
+/* .modal__button_disabled:hover {
+  opacity: 0;
+} */
+
+.modal__button:hover {
+  opacity: 0.8;
 }
 
 .modal__container-preview {
