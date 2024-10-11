@@ -12,6 +12,7 @@
   object-fit: cover;
   width: 282px;
   height: 282px;
+  background-size: cover;
 }
 
 .card__image:hover {

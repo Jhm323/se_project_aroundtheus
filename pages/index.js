@@ -134,6 +134,8 @@ function handleProfileEditSubmit(event) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = bioInput.value;
   closeModal(profileEditModal);
+  event.target.reset();
+  editFormValidator.resetValidation();
 }
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);

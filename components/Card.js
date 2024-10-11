@@ -57,9 +57,9 @@ export default class Card {
 
     this._element.querySelector(
       ".card__image"
-    ).styles.backgroundImage = `url(${this._link})`;
-    this._element.querySelector(".card__title").textcontent = this._name;
-    console.log(this._element);
+    ).style.backgroundImage = `url(${this._link})`;
+    this._element.querySelector(".card__title").textcontent = this._text;
+
     return this._element;
   }
 }
