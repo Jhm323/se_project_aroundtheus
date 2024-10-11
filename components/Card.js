@@ -19,7 +19,6 @@ export default class Card {
     this._cardElement
       .querySelector(".card__trash-button")
       .addEventListener("click", () => {
-        console.log("click");
         this._handleDeleteCard();
       });
 
@@ -32,8 +31,8 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    this._element.remove();
+    this._element = null;
   }
 
   _handleLikeIcon() {
@@ -55,10 +54,8 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector(
-      ".card__image"
-    ).style.backgroundImage = `url(${this._link})`;
-    this._element.querySelector(".card__title").textcontent = this._text;
+    this._element.querySelector(".card__image").src = this._link;
+    this._element.querySelector(".card__title").textContent = this._name;
 
     return this._element;
   }

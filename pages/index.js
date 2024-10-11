@@ -187,9 +187,17 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function handlePreviewModal(data) {
+  console.log(data);
+  previewModalImage.src = data._link;
+  previewModalImage.alt = data._name;
+  previewModalCaption.textContent = data._name;
+  openModal(previewModal);
+}
+
 initialCards.forEach((cardData) => {
   // const newCard = getCardElement(cardData);
-  const card = new Card(cardData, "#card-template");
+  const card = new Card(cardData, "#card-template", handlePreviewModal);
   const newCard = card.generateCard();
   cardsList.prepend(newCard);
 });
