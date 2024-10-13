@@ -7,27 +7,26 @@ export default class Card {
     this._handleImageClick = handleImageClick;
   }
 
+  _findCardElements() {
+    this._likeButton = this._element.querySelector(".card__like-button");
+    this._cardImage = this._element.querySelector(".card__image");
+    this._trashButton = this._element.querySelector(".card__trash-button");
+    this._card = this._element.querySelector(".card");
+    this._cardTitle = this._element.querySelector(".card__title");
+  }
+
   _setEventListeners() {
-    // ".card__like-button";
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-      });
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeIcon();
+    });
 
-    // ".card__trash-button";
-    this._cardElement
-      .querySelector(".card__trash-button")
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
+    this._trashButton.addEventListener("click", () => {
+      this._handleDeleteCard();
+    });
 
-    // "#preview-image-modal"
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick(this);
-      });
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this);
+    });
   }
 
   _handleDeleteCard() {
@@ -36,9 +35,7 @@ export default class Card {
   }
 
   _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
   _getTemplate() {
@@ -52,9 +49,11 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._findCardElements();
     this._setEventListeners();
 
     this._element.querySelector(".card__image").src = this._link;
+    this._element.querySelector(".card__image").alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
 
     return this._element;

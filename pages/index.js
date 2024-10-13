@@ -34,11 +34,6 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
@@ -113,15 +108,13 @@ function handleModalOverlay(event) {
 }
 
 // Profile Edit Modal
-profileEditButton.addEventListener("click", () => {
-  openModal(profileEditModal);
-  openProfileEditModal();
-});
+profileEditButton.addEventListener("click", openProfileEditModal);
 
 function openProfileEditModal() {
   openModal(profileEditModal);
   nameInput.value = profileTitle.textContent;
   bioInput.value = profileDescription.textContent;
+  editFormValidator.resetValidation();
 }
 
 function handleProfileEditSubmit(event) {
@@ -130,7 +123,6 @@ function handleProfileEditSubmit(event) {
   profileDescription.textContent = bioInput.value;
   closeModal(profileEditModal);
   event.target.reset();
-  editFormValidator.resetValidation();
 }
 
 profileForm.addEventListener("submit", handleProfileEditSubmit);
@@ -148,17 +140,24 @@ function handleAddNewCardSubmit(event) {
   createCard(cardData);
   closeModal(addNewCardModal);
   event.target.reset();
-  addFormValidator.resetValidation();
+  addFormValidator.toggleButtonState();
+}
+
+function generateCard(cardData) {
+  const card = new Card(cardData, "#card-template", handlePreviewModal);
+  return card.generateCard();
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handlePreviewModal);
-  const cardElement = card.generateCard();
+  const cardElement = generateCard(cardData);
   cardsList.prepend(cardElement);
 }
 
+function renderCard(cardElement, method = "append") {
+  cardsList[method](cardElement);
+}
+
 function handlePreviewModal(data) {
-  console.log(data);
   previewModalImage.src = data._link;
   previewModalImage.alt = data._name;
   previewModalCaption.textContent = data._name;
@@ -170,7 +169,6 @@ initialCards.forEach((cardData) => {
 });
 
 const config = {
-  // formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
