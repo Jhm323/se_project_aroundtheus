@@ -150,42 +150,42 @@ function handleAddNewCardSubmit(event) {
     name: addNewCardInputTitle.value,
     link: addNewCardInputUrl.value,
   };
-
-  const newCard = getCardElement(cardData);
-  cardsList.prepend(newCard);
-  closeModal(addNewCardModal);
-  event.target.reset();
-  addFormValidator.resetValidation();
 }
+//   const newCard = getCardElement(cardData);
+//   cardsList.prepend(newCard);
+//   closeModal(addNewCardModal);
+//   event.target.reset();
+//   addFormValidator.resetValidation();
+// }
 
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const trashButton = cardElement.querySelector(".card__trash-button");
+// function getCardElement(data) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImage = cardElement.querySelector(".card__image");
+//   const cardTitle = cardElement.querySelector(".card__title");
+//   const likeButton = cardElement.querySelector(".card__like-button");
+//   const trashButton = cardElement.querySelector(".card__trash-button");
 
-  // trashButton.addEventListener("click", () => {
-  //   cardElement.remove();
-  // });
+//   trashButton.addEventListener("click", () => {
+//     cardElement.remove();
+//   });
 
-  // likeButton.addEventListener("click", () => {
-  //   likeButton.classList.toggle("card__like-button_active");
-  // });
+//   likeButton.addEventListener("click", () => {
+//     likeButton.classList.toggle("card__like-button_active");
+//   });
 
-  cardImage.addEventListener("click", () => {
-    previewModalImage.src = data.link;
-    previewModalImage.alt = data.name;
-    previewModalCaption.textContent = data.name;
-    openModal(previewModal);
-  });
+//   cardImage.addEventListener("click", () => {
+//     previewModalImage.src = data.link;
+//     previewModalImage.alt = data.name;
+//     previewModalCaption.textContent = data.name;
+//     openModal(previewModal);
+//   });
 
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
+//   cardImage.src = data.link;
+//   cardImage.alt = data.name;
+//   cardTitle.textContent = data.name;
 
-  return cardElement;
-}
+//   return cardElement;
+// }
 
 function handlePreviewModal(data) {
   console.log(data);
