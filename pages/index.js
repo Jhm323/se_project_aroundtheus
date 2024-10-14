@@ -158,9 +158,9 @@ function renderCard(cardElement, method = "append") {
 }
 
 function handlePreviewModal(data) {
-  previewModalImage.src = data._link;
-  previewModalImage.alt = data._name;
-  previewModalCaption.textContent = data._name;
+  previewModalImage.src = data.link;
+  previewModalImage.alt = data.name;
+  previewModalCaption.textContent = data.name;
   openModal(previewModal);
 }
 
