@@ -31,57 +31,57 @@ export const initialCards = [
   },
 ];
 
-export const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+// export const cardTemplate =
+//   document.querySelector("#card-template").content.firstElementChild;
 
-// Profile form const
+// // Profile form const
 
-export const profileForm = document.forms["profile-form"];
-export const profileEditModal = document.querySelector("#profile-edit-modal");
-export const profileEditButton = document.querySelector("#profile-edit-button");
-export const profileModalCloseButton = profileEditModal.querySelector(
-  "#modal-close-button"
-);
-export const profileTitle = document.querySelector(".profile__title");
-export const nameInput = profileForm.querySelector("#profile__title-input");
-export const profileDescription = document.querySelector(
-  ".profile__description"
-);
-export const bioInput = profileForm.querySelector(
-  "#profile__description-input"
-);
-export const formInputElement = document.querySelector(".modal__input");
+// export const profileForm = document.forms["profile-form"];
+// export const profileEditModal = document.querySelector("#profile-edit-modal");
+// export const profileEditButton = document.querySelector("#profile-edit-button");
+// export const profileModalCloseButton = profileEditModal.querySelector(
+//   "#modal-close-button"
+// );
+// export const profileTitle = document.querySelector(".profile__title");
+// export const nameInput = profileForm.querySelector("#profile__title-input");
+// export const profileDescription = document.querySelector(
+//   ".profile__description"
+// );
+// export const bioInput = profileForm.querySelector(
+//   "#profile__description-input"
+// );
+// export const formInputElement = document.querySelector(".modal__input");
 
-// Preview modal const
+// // Preview modal const
 
-export const previewModal = document.querySelector("#preview-image-modal");
-export const previewModalImage = document.querySelector(
-  ".modal__image-preview"
-);
-export const previewModalCaption = document.querySelector(
-  "#modal-title-preview"
-);
-export const previewModalCloseButton = previewModal.querySelector(
-  "#modal-close-button"
-);
+// export const previewModal = document.querySelector("#preview-image-modal");
+// export const previewModalImage = document.querySelector(
+//   ".modal__image-preview"
+// );
+// export const previewModalCaption = document.querySelector(
+//   "#modal-title-preview"
+// );
+// export const previewModalCloseButton = previewModal.querySelector(
+//   "#modal-close-button"
+// );
 
-// Add Card modal const
+// // Add Card modal const
 
-export const addNewCardButton = document.querySelector("#new-card-button");
-export const addNewCardModal = document.querySelector("#add-card-modal");
-export const addNewCardFrom = document.forms["add-card-form"];
-export const addNewCardModalCloseButton = addNewCardModal.querySelector(
-  "#modal-close-button"
-);
-export const cardsList = document.querySelector(".cards__list");
-export const cardTitle = document.querySelector(".card__title");
-export const addNewCardInputTitle = addNewCardFrom.querySelector(
-  "#add-card-input-title"
-);
-export const cardImage = document.querySelector(".card__image");
-export const addNewCardInputUrl = addNewCardFrom.querySelector(
-  "#add-card-input-url"
-);
+// export const addNewCardButton = document.querySelector("#new-card-button");
+// export const addNewCardModal = document.querySelector("#add-card-modal");
+// export const addNewCardFrom = document.forms["add-card-form"];
+// export const addNewCardModalCloseButton = addNewCardModal.querySelector(
+//   "#modal-close-button"
+// );
+// export const cardsList = document.querySelector(".cards__list");
+// export const cardTitle = document.querySelector(".card__title");
+// export const addNewCardInputTitle = addNewCardFrom.querySelector(
+//   "#add-card-input-title"
+// );
+// export const cardImage = document.querySelector(".card__image");
+// export const addNewCardInputUrl = addNewCardFrom.querySelector(
+//   "#add-card-input-url"
+// );
 
 export const config = {
   inputSelector: ".modal__input",

@@ -36,7 +36,7 @@ export default class Popup {
       });
       modal.addEventListener("click", (event) => {
         this._handleEscKeyPress(event);
-        // ...handleModalOverlay
+        this._handleModalOverlay(event);
       });
     });
   }

@@ -11,7 +11,7 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo({ name, description }) {
+  setUserInfo(name, description) {
     this._nameElement = name;
     this._jobElement = description;
   }

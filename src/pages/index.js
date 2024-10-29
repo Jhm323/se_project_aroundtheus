@@ -1,3 +1,5 @@
+// Imports
+
 import "../pages/index.css";
 import "../utils/constants.js";
 import Card from "../components/Card.js";
@@ -6,27 +8,69 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import {
-  addNewCardFrom,
-  initialCards,
-  profileEditButton,
-  addNewCardButton,
-  cardsList,
-  config,
-  profileForm,
-  addNewCardInputTitle,
-  addNewCardInputUrl,
-  nameInput,
-  bioInput,
-} from "../utils/constants.js";
+import { initialCards, config } from "../utils/constants.js";
 
-// Classes
+// Constants
 
-const ediProfilePopup = new PopupWithForm(
+export const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
+
+// Profile form const
+
+export const profileForm = document.forms["profile-form"];
+export const profileEditModal = document.querySelector("#profile-edit-modal");
+export const profileEditButton = document.querySelector("#profile-edit-button");
+export const profileModalCloseButton = profileEditModal.querySelector(
+  "#modal-close-button"
+);
+export const profileTitle = document.querySelector(".profile__title");
+export const nameInput = profileForm.querySelector("#profile__title-input");
+export const profileDescription = document.querySelector(
+  ".profile__description"
+);
+export const bioInput = profileForm.querySelector(
+  "#profile__description-input"
+);
+export const formInputElement = document.querySelector(".modal__input");
+
+// Preview modal const
+
+export const previewModal = document.querySelector("#preview-image-modal");
+export const previewModalImage = document.querySelector(
+  ".modal__image-preview"
+);
+export const previewModalCaption = document.querySelector(
+  "#modal-title-preview"
+);
+export const previewModalCloseButton = previewModal.querySelector(
+  "#modal-close-button"
+);
+
+// Add Card modal const
+
+export const addNewCardButton = document.querySelector("#new-card-button");
+export const addNewCardModal = document.querySelector("#add-card-modal");
+export const addNewCardFrom = document.forms["add-card-form"];
+export const addNewCardModalCloseButton = addNewCardModal.querySelector(
+  "#modal-close-button"
+);
+export const cardsList = document.querySelector(".cards__list");
+export const cardTitle = document.querySelector(".card__title");
+export const addNewCardInputTitle = addNewCardFrom.querySelector(
+  "#add-card-input-title"
+);
+export const cardImage = document.querySelector(".card__image");
+export const addNewCardInputUrl = addNewCardFrom.querySelector(
+  "#add-card-input-url"
+);
+
+// New Classes
+
+const editProfilePopup = new PopupWithForm(
   { popupSelector: "#profile-edit-modal" },
   handleProfileEditSubmit
 );
-ediProfilePopup.setEventListeners();
+editProfilePopup.setEventListeners();
 
 const newCardPopup = new PopupWithForm(
   { popupSelector: "#add-card-modal" },
@@ -54,31 +98,31 @@ const cardList = new Section(
 
 // Profile Edit Modal
 
-profileEditButton.addEventListener("click", openProfileEditModal);
-
 function openProfileEditModal() {
-  ediProfilePopup.open();
+  editProfilePopup.open();
   const currentUserInfo = userInfo.getUserInfo();
   nameInput.value = currentUserInfo.name;
   bioInput.value = currentUserInfo.description;
   editFormValidator.resetValidation();
 }
 
-function handleProfileEditSubmit(inputValues) {
-  userInfo.setUserInfo({
-    name: inputValues.title,
-    description: inputValues.description,
-  });
-  ediProfilePopup.close();
-  event.target.reset();
+function handleProfileEditSubmit() {
+  const name = nameInput.value;
+  const description = bioInput.value;
+  // const info = {
+  //   name,
+  //   description,
+  // };
+  userInfo.setUserInfo(name, description);
+  editProfilePopup.close();
 }
 
-// profileForm.addEventListener("submit", handleProfileEditSubmit);
+profileEditButton.addEventListener("click", openProfileEditModal);
+profileForm.addEventListener("submit", handleProfileEditSubmit);
 
 // Add New Card Modal
-addNewCardButton.addEventListener("click", () => newCardPopup.open());
-// addNewCardFrom.addEventListener("submit", handleAddNewCardSubmit);
 
+addNewCardButton.addEventListener("click", () => newCardPopup.open());
 cardList.renderItems();
 
 function handleAddNewCardSubmit(event) {
@@ -88,7 +132,6 @@ function handleAddNewCardSubmit(event) {
   };
   createCard(cardData);
   newCardPopup.close();
-  // event.target.reset();
   addFormValidator.toggleButtonState();
 }
 
@@ -103,7 +146,7 @@ function createCard(cardData) {
   return cardElement;
 }
 
-function renderCard(cardElement, method = "append") {
+function renderCard(cardElement, method = "prepend") {
   cardsList[method](cardElement);
 }
 
@@ -111,9 +154,6 @@ function handlePreviewModal(data) {
   imagePreviewPopup.open({
     link: data.link,
     name: data.name,
-    // previewModalImage.src = data.link;
-    // previewModalImage.alt = data.name;
-    // previewModalCaption.textContent = data.name;
   });
 }
 
