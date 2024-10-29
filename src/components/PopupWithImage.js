@@ -7,29 +7,14 @@ export default class PopupWithImage extends Popup {
       ".modal__image-preview"
     );
     this._captionElement = this._popupElement.querySelector(
-      ".modal-title-preview"
+      ".modal__title-preview"
     );
   }
 
   open(data) {
     this._imageElement.src = data.link;
-    this._imageElement.alt = data.name;
-    this._captionElement.textcontent = data.name;
-    // set the image's src and alt
-    // set the caption's textContent
-    //  previewModalImage.src = data.link;
-    //   previewModalImage.alt = data.name;
-    //   previewModalCaption.textContent = data.name;
+    this._imageElement.alt = data.title;
+    this._captionElement.textcontent = data.title;
     super.open();
   }
 }
-
-// in index.js
-// Create one instance of this class in index.js and call its parent’s setEventListeners() method.
-
-// function handlePreviewModal(data) {
-//   previewModalImage.src = data.link;
-//   previewModalImage.alt = data.name;
-//   previewModalCaption.textContent = data.name;
-//   openModal(previewModal);
-// }

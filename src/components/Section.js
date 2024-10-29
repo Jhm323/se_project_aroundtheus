@@ -19,6 +19,6 @@ export default class Section {
 
   addItem(item) {
     // add item to the DOM
-    this._selector.prepend(elements);
+    this._selector.prepend(item);
   }
 }
