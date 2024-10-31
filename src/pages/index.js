@@ -105,17 +105,15 @@ function openProfileEditModal() {
   bioInput.value = currentUserInfo.description;
   editFormValidator.resetValidation();
 }
-
-function handleProfileEditSubmit() {
-  const name = nameInput.value;
-  const description = bioInput.value;
-  // const info = {
-  //   name,
-  //   description,
-  // };
+// **********************************
+function handleProfileEditSubmit(inputs) {
+  const name = inputs.title;
+  const description = inputs.description;
+  console.log(name, description);
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
 }
+// **********************************
 
 profileEditButton.addEventListener("click", openProfileEditModal);
 profileForm.addEventListener("submit", handleProfileEditSubmit);
@@ -125,15 +123,18 @@ profileForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 cardList.renderItems();
 
-function handleAddNewCardSubmit(event) {
+// **********************************
+
+function handleAddNewCardSubmit(inputs) {
   const cardData = {
-    name: addNewCardInputTitle.value,
-    link: addNewCardInputUrl.value,
+    name: inputs.title,
+    link: inputs.description,
   };
   createCard(cardData);
   newCardPopup.close();
   addFormValidator.toggleButtonState();
 }
+// **********************************
 
 function generateCard(cardData) {
   const card = new Card(cardData, "#card-template", handlePreviewModal);

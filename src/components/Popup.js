@@ -11,11 +11,11 @@ export default class Popup {
     // this._popupElement.reset();
     this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._handleEscKeyPress);
-    document.removeEventListener("keydown", this._handleModalOverlay);
+    document.removeEventListener("click", this._handleModalOverlay);
   }
 
   _handleEscKeyPress(event) {
-    console.log(event);
+    console.log(event.key);
     if (event.key === "Escape") {
       this.close();
     }
@@ -34,8 +34,10 @@ export default class Popup {
       button.addEventListener("click", () => {
         this.close();
       });
-      modal.addEventListener("click", (event) => {
+      document.addEventListener("keydown", (event) => {
         this._handleEscKeyPress(event);
+      });
+      modal.addEventListener("click", (event) => {
         this._handleModalOverlay(event);
       });
     });
