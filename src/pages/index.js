@@ -105,7 +105,7 @@ function openProfileEditModal() {
   bioInput.value = currentUserInfo.description;
   editFormValidator.resetValidation();
 }
-// **********************************
+
 function handleProfileEditSubmit(inputs) {
   const name = inputs.title;
   const description = inputs.description;
@@ -113,20 +113,13 @@ function handleProfileEditSubmit(inputs) {
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
 }
-// **********************************
 
 profileEditButton.addEventListener("click", openProfileEditModal);
-profileForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  handleProfileEditSubmit;
-});
 
 // Add New Card Modal
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 cardList.renderItems();
-
-// **********************************
 
 function handleAddNewCardSubmit(inputs) {
   const cardData = {
@@ -136,10 +129,8 @@ function handleAddNewCardSubmit(inputs) {
 
   createCard(cardData);
   newCardPopup.close();
-  // addFormValidator.toggleButtonState();
   addFormValidator.disableButton();
 }
-// **********************************
 
 function generateCard(cardData) {
   const card = new Card(cardData, "#card-template", handlePreviewModal);
@@ -148,13 +139,12 @@ function generateCard(cardData) {
 
 function createCard(cardData) {
   const cardElement = generateCard(cardData);
-  renderCard(cardElement);
-  return cardElement;
+  cardList.addItem(cardElement);
 }
 
-function renderCard(cardElement, method = "prepend") {
-  cardsList[method](cardElement);
-}
+// function renderCard(cardElement, method = "prepend") {
+//   cardsList[method](cardElement);
+// }
 
 function handlePreviewModal(data) {
   imagePreviewPopup.open({
@@ -168,3 +158,27 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(config, addNewCardFrom);
 addFormValidator.enableValidation();
+
+// // define an object for storing validators
+// const formValidators = {};
+
+// const enableValidation = (config) => {
+//   const formList = Array.from(document.querySelectorAll(config.formSelector));
+//   formList.forEach((formElement) => {
+//     const validator = new FormValidator(config, formElement);
+//     // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
+//     const formName = formElement.getAttribute("name");
+
+//     // Here you store the validator using the `name` of the form
+//     formValidators[formName] = validator;
+//     validator.enableValidation();
+//   });
+// };
+
+// enableValidation(config);
+
+// formValidators[ profileForm.getAttribute('name') ].resetValidation()
+
+// // or you can use a string – the name of the form (you know it from `index.html`)
+
+// formValidators['profile-form'].resetValidation()
