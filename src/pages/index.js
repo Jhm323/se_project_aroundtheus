@@ -109,14 +109,17 @@ function openProfileEditModal() {
 function handleProfileEditSubmit(inputs) {
   const name = inputs.title;
   const description = inputs.description;
-  console.log(name, description);
+  console.log(inputs, name, description);
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
 }
 // **********************************
 
 profileEditButton.addEventListener("click", openProfileEditModal);
-profileForm.addEventListener("submit", handleProfileEditSubmit);
+profileForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  handleProfileEditSubmit;
+});
 
 // Add New Card Modal
 
@@ -130,9 +133,11 @@ function handleAddNewCardSubmit(inputs) {
     name: inputs.title,
     link: inputs.description,
   };
+
   createCard(cardData);
   newCardPopup.close();
-  addFormValidator.toggleButtonState();
+  // addFormValidator.toggleButtonState();
+  addFormValidator.disableButton();
 }
 // **********************************
 
