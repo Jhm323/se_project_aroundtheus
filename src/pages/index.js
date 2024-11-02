@@ -129,7 +129,8 @@ function handleAddNewCardSubmit(inputs) {
 
   createCard(cardData);
   newCardPopup.close();
-  addFormValidator.disableButton();
+  addFormValidator._disableButton();
+  // thanks
 }
 
 function generateCard(cardData) {
