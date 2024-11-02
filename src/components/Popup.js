@@ -1,6 +1,7 @@
 export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
+    this._handleEscKeyPress = this._handleEscKeyPress.bind(this);
   }
 
   open() {
@@ -26,18 +27,15 @@ export default class Popup {
   }
 
   setEventListeners() {
-    const closeButton = this._popupElement.querySelector(".modal__close");
-    if (closeButton) {
-      const modal = closeButton.closest(".modal");
-      closeButton.addEventListener("click", () => {
+    this._popupElement
+      .querySelector(".modal__close")
+      .addEventListener("click", () => {
         this.close();
       });
-      document.addEventListener("keydown", (event) => {
-        this._handleEscKeyPress(event);
-      });
-      modal.addEventListener("click", (event) => {
-        this._handleModalOverlay(event);
-      });
-    }
+    this._popupElement.addEventListener("click", (event) => {
+      if (event.target === this._popupElement) {
+        this.close();
+      }
+    });
   }
 }

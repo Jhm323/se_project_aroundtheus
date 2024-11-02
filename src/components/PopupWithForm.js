@@ -9,7 +9,6 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    // const inputList = this._popupForm.querySelectorAll(".modal__input");
     const data = {};
     this._inputList.forEach((input) => {
       data[input.name] = input.value;
@@ -23,10 +22,6 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
       this._popupForm.reset();
-      // this.close();
     });
   }
 }
-
-// Disable Submit Button**
-// ----toggleButtonState**
