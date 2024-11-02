@@ -159,6 +159,8 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(config, addNewCardFrom);
 addFormValidator.enableValidation();
 
+// // Form Valiation
+
 // // define an object for storing validators
 // const formValidators = {};
 
@@ -167,18 +169,23 @@ addFormValidator.enableValidation();
 //   formList.forEach((formElement) => {
 //     const validator = new FormValidator(config, formElement);
 //     // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
-//     const formName = formElement.getAttribute("name");
+//     const profileForm = formElement.getAttribute("profile-form");
+//     const addNewCardFrom = formElement.getAttribute("add-card-form");
 
 //     // Here you store the validator using the `name` of the form
-//     formValidators[formName] = validator;
+//     formValidators[profileForm] = validator;
+//     formValidators[addNewCardFrom] = validator;
+
 //     validator.enableValidation();
 //   });
 // };
 
 // enableValidation(config);
 
-// formValidators[ profileForm.getAttribute('name') ].resetValidation()
+// formValidators[profileForm.getAttribute("profile-form")].resetValidation();
+// formValidators[profileForm.getAttribute("add-card-form")].resetValidation();
 
 // // or you can use a string – the name of the form (you know it from `index.html`)
 
-// formValidators['profile-form'].resetValidation()
+// formValidators["profile-form"].resetValidation();
+// formValidators["add-card-form"].resetValidation();
