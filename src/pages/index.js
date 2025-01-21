@@ -9,7 +9,8 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { initialCards, config } from "../utils/constants.js";
-
+import Api from "../components/Api.js";
+import { api } from "../components/Api.js";
 // Constants
 
 export const cardTemplate =
@@ -87,7 +88,7 @@ const userInfo = new UserInfo(".profile__title", ".profile__description");
 
 const cardList = new Section(
   {
-    items: initialCards,
+    // items: initialCards,
     renderer: (cardData) => {
       const card = generateCard(cardData);
       cardList.addItem(card);
@@ -160,33 +161,12 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(config, addNewCardFrom);
 addFormValidator.enableValidation();
 
-// // Form Valiation
-
-// // define an object for storing validators
-// const formValidators = {};
-
-// const enableValidation = (config) => {
-//   const formList = Array.from(document.querySelectorAll(config.formSelector));
-//   formList.forEach((formElement) => {
-//     const validator = new FormValidator(config, formElement);
-//     // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
-//     const profileForm = formElement.getAttribute("profile-form");
-//     const addNewCardFrom = formElement.getAttribute("add-card-form");
-
-//     // Here you store the validator using the `name` of the form
-//     formValidators[profileForm] = validator;
-//     formValidators[addNewCardFrom] = validator;
-
-//     validator.enableValidation();
-//   });
-// };
-
-// enableValidation(config);
-
-// formValidators[profileForm.getAttribute("profile-form")].resetValidation();
-// formValidators[profileForm.getAttribute("add-card-form")].resetValidation();
-
-// // or you can use a string – the name of the form (you know it from `index.html`)
-
-// formValidators["profile-form"].resetValidation();
-// formValidators["add-card-form"].resetValidation();
+api
+  .getInitialCards()
+  .then((result) => {
+    console.log(result);
+    cardList.renderItems(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
