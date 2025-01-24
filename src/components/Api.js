@@ -1,7 +1,7 @@
-class Api {
-  constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+export default class Api {
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
   }
 
   getInitialCards() {
@@ -21,15 +21,15 @@ class Api {
 
 // api.getInitialCards();
 
-export const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "8a34193b-7f1f-46cc-96d4-6480048f699e",
-    "Content-Type": "application/json",
-  },
-});
+// export const api = new Api({
+//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
+//   headers: {
+//     authorization: "8a34193b-7f1f-46cc-96d4-6480048f699e",
+//     "Content-Type": "application/json",
+//   },
+// });
 
 // load app
 // request data from server
-// CreateReadUpdateDelete
 // update the app to display from server
+//  "Create-Read-Update-Delete"

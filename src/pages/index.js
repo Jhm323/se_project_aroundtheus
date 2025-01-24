@@ -10,7 +10,14 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { initialCards, config } from "../utils/constants.js";
 import Api from "../components/Api.js";
-import { api } from "../components/Api.js";
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "8a34193b-7f1f-46cc-96d4-6480048f699e",
+    "Content-Type": "application/json",
+  },
+});
 // Constants
 
 export const cardTemplate =
@@ -120,7 +127,7 @@ profileEditButton.addEventListener("click", openProfileEditModal);
 // Add New Card Modal
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
-cardList.renderItems();
+// cardList.renderItems();
 
 function handleAddNewCardSubmit(inputs) {
   const cardData = {
@@ -161,12 +168,13 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(config, addNewCardFrom);
 addFormValidator.enableValidation();
 
-api
-  .getInitialCards()
-  .then((result) => {
-    console.log(result);
-    cardList.renderItems(result);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+api.getInitialCards().then((result) => {
+  console.log(result);
+});
+// .then((result) => {
+//   console.log(result);
+//   cardList.renderItems(result);
+// })
+// .catch((error) => {
+//   console.log(error);
+// });
