@@ -1,4 +1,4 @@
-// Imports
+// Imports //////////////////////////////////////////////////
 
 import "../pages/index.css";
 import "../utils/constants.js";
@@ -18,12 +18,13 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-// Constants
+
+// Constants /////////////////////////////////////////////
 
 export const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-// Profile form const
+// Profile form const /////////////////////////////////////
 
 export const profileForm = document.forms["profile-form"];
 export const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -41,7 +42,7 @@ export const bioInput = profileForm.querySelector(
 );
 export const formInputElement = document.querySelector(".modal__input");
 
-// Preview modal const
+// Preview modal const ///////////////////////////////////////
 
 export const previewModal = document.querySelector("#preview-image-modal");
 export const previewModalImage = document.querySelector(
@@ -54,7 +55,7 @@ export const previewModalCloseButton = previewModal.querySelector(
   "#modal-close-button"
 );
 
-// Add Card modal const
+// Add Card modal const ///////////////////////////////////////////
 
 export const addNewCardButton = document.querySelector("#new-card-button");
 export const addNewCardModal = document.querySelector("#add-card-modal");
@@ -72,7 +73,12 @@ export const addNewCardInputUrl = addNewCardFrom.querySelector(
   "#add-card-input-url"
 );
 
-// New Classes
+// Confirm Delete Modal /////////////////////////////
+export const confirmDeleteModal = document.querySelector(
+  "#confirm-delete-modal"
+);
+
+// New Classes /////////////////////////////////////////////////
 
 const editProfilePopup = new PopupWithForm(
   { popupSelector: "#profile-edit-modal" },
@@ -104,7 +110,7 @@ const cardList = new Section(
   ".cards__list"
 );
 
-// Profile Edit Modal
+// Profile Edit Modal /////////////////////////////////////////
 
 function openProfileEditModal() {
   editProfilePopup.open();
@@ -124,10 +130,9 @@ function handleProfileEditSubmit(inputs) {
 
 profileEditButton.addEventListener("click", openProfileEditModal);
 
-// Add New Card Modal
+// Add New Card Modal /////////////////////////////////////////////
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
-// cardList.renderItems();
 
 function handleAddNewCardSubmit(inputs) {
   const cardData = {
@@ -138,11 +143,15 @@ function handleAddNewCardSubmit(inputs) {
   createCard(cardData);
   newCardPopup.close();
   addFormValidator.disableButton();
-  // thanks
 }
 
 function generateCard(cardData) {
-  const card = new Card(cardData, "#card-template", handlePreviewModal);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handlePreviewModal,
+    handleDeleteClick
+  );
   return card.generateCard();
 }
 
@@ -151,16 +160,29 @@ function createCard(cardData) {
   cardList.addItem(cardElement);
 }
 
-// function renderCard(cardElement, method = "prepend") {
-//   cardsList[method](cardElement);
-// }
-
 function handlePreviewModal(data) {
   imagePreviewPopup.open({
     link: data.link,
     name: data.name,
   });
 }
+
+function handleDeleteClick(cardId) {
+  console.log(cardId);
+  // open the confirm modal
+}
+
+function openConfirmDeleteModal(cardId) {
+  api.deleteCard(cardId).then((result) => {
+    console.log(result);
+  });
+}
+
+const confirmDeleteButton = confirmDeleteModal.querySelector(
+  "confirm-delete-button"
+);
+
+confirmDeleteButton.addEventListener("click", openConfirmDeleteModal);
 
 const editFormValidator = new FormValidator(config, profileForm);
 editFormValidator.enableValidation();
@@ -169,7 +191,7 @@ const addFormValidator = new FormValidator(config, addNewCardFrom);
 addFormValidator.enableValidation();
 
 api.getInitialCards().then((result) => {
-  console.log(result);
+  cardList.renderItems(result);
 });
 // .then((result) => {
 //   console.log(result);
@@ -178,3 +200,33 @@ api.getInitialCards().then((result) => {
 // .catch((error) => {
 //   console.log(error);
 // });
+
+// api.getUserInfo().then(
+//   () => {}
+//   // .then(data => console.log(data))    // Log the data to the console
+//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error));
+// );
+
+// api.addNewCard().then(
+//   () => {}
+//   // .then(data => console.log(data))    // Log the data to the console
+//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error));
+// );
+
+// api.deleteCard().then(
+//   () => {}
+//   // .then(data => console.log(data))    // Log the data to the console
+//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error)
+// );
+
+// api.addLike().then(
+//   () => {}
+//   // .then(data => console.log(data))    // Log the data to the console
+//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error)
+// );
+
+// api.deleteLike().then(
+//   () => {}
+//   // .then(data => console.log(data))    // Log the data to the console
+//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error)
+// );

@@ -130,10 +130,6 @@
   opacity: 0.1;
 }
 
-/* .modal__button_disabled:hover {
-  opacity: 0;
-} */
-
 .modal__button:hover {
   opacity: 0.8;
 }
@@ -169,6 +165,42 @@
 
 .form__submit_inactive {
   opacity: 0.1;
+}
+
+/* delete confirm modal */
+#delete-confirm-modal {
+  max-width: 430px;
+  max-height: 181px;
+}
+
+#modal__container-delete-confirm {
+  color: #fff;
+}
+
+#delete-confirm-text {
+  max-width: 358px;
+  max-height: 23px;
+  color: #000;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.delete-confirm-button {
+  max-width: 358px;
+  max-height: 50px;
+  color: #000;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 }
 
 @media screen and (max-width: 730px) {
