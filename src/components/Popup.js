@@ -2,6 +2,7 @@ export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
     this._handleEscKeyPress = this._handleEscKeyPress.bind(this);
+    this._modalButton = this._popupElement.querySelector(".modal__button");
   }
 
   open() {
@@ -37,5 +38,24 @@ export default class Popup {
         this.close();
       }
     });
+    this._popupElement.addEventListener("keydown", (event) => {
+      console.log("escapeKeyPress active");
+      this._handleEscKeyPress(event);
+    });
+
+    this._popupElement.addEventListener("click", (event) => {
+      console.log("handleModalOverlay active");
+      this._handleModalOverlay(event);
+    });
+  }
+
+  setHandleDelete(handleDelete, cardId) {
+    this._popupElement
+      .querySelector(".modal__form")
+      .addEventListener("submit", (event) => {
+        event.preventDefault();
+        handleDelete(cardId);
+        this.close();
+      });
   }
 }

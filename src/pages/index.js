@@ -4,6 +4,7 @@ import "../pages/index.css";
 import "../utils/constants.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
@@ -73,10 +74,10 @@ export const addNewCardInputUrl = addNewCardFrom.querySelector(
   "#add-card-input-url"
 );
 
-// Confirm Delete Modal /////////////////////////////
-export const confirmDeleteModal = document.querySelector(
-  "#confirm-delete-modal"
-);
+// // Confirm Delete Modal /////////////////////////////
+// export const confirmDeleteModal = document.querySelector(
+//   "#confirm-delete-modal"
+// );
 
 // New Classes /////////////////////////////////////////////////
 
@@ -167,9 +168,13 @@ function handlePreviewModal(data) {
   });
 }
 
+const confirmDeleteModal = new Popup({
+  popupSelector: "#confirm-delete-modal",
+});
+
 function handleDeleteClick(cardId) {
-  console.log(cardId);
-  // open the confirm modal
+  confirmDeleteModal.setHandleDelete(openConfirmDeleteModal, cardId);
+  confirmDeleteModal.open();
 }
 
 function openConfirmDeleteModal(cardId) {
@@ -178,11 +183,11 @@ function openConfirmDeleteModal(cardId) {
   });
 }
 
-const confirmDeleteButton = confirmDeleteModal.querySelector(
-  "confirm-delete-button"
-);
+// const confirmDeleteButton = confirmDeleteModal.querySelector(
+//   "confirm-delete-button"
+// );
 
-confirmDeleteButton.addEventListener("click", openConfirmDeleteModal);
+// confirmDeleteButton.addEventListener("click", () => openConfirmDeleteModal());
 
 const editFormValidator = new FormValidator(config, profileForm);
 editFormValidator.enableValidation();
@@ -193,40 +198,3 @@ addFormValidator.enableValidation();
 api.getInitialCards().then((result) => {
   cardList.renderItems(result);
 });
-// .then((result) => {
-//   console.log(result);
-//   cardList.renderItems(result);
-// })
-// .catch((error) => {
-//   console.log(error);
-// });
-
-// api.getUserInfo().then(
-//   () => {}
-//   // .then(data => console.log(data))    // Log the data to the console
-//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error));
-// );
-
-// api.addNewCard().then(
-//   () => {}
-//   // .then(data => console.log(data))    // Log the data to the console
-//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error));
-// );
-
-// api.deleteCard().then(
-//   () => {}
-//   // .then(data => console.log(data))    // Log the data to the console
-//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error)
-// );
-
-// api.addLike().then(
-//   () => {}
-//   // .then(data => console.log(data))    // Log the data to the console
-//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error)
-// );
-
-// api.deleteLike().then(
-//   () => {}
-//   // .then(data => console.log(data))    // Log the data to the console
-//   // .catch(error => console.error('Error:', error));  // Handle any errorsrror:", error)
-// );

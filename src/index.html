@@ -137,20 +137,44 @@
 
     <!-- Confirm Delete Modal -->
     <div class="modal" id="confirm-delete-modal">
-      <div class="modal__container-confirm-delete">
-        <h3 id="confirm-delete-text">Are you sure?</h3>
-        <button class="confirm-delete-button">Yes</button>
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close-button"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <form
+          class="modal__form"
+          id="confirm-delete-form"
+          name="confirm-delete-form"
+        >
+          <button type="submit" class="modal__button">Yes</button>
+        </form>
       </div>
     </div>
 
     <!-- Edit Profile Pic Modal -->
-    <!-- <div class="modal" id="edit-profile-pic-modal">
-    <div class="modal">
-      <h3>Change profile picture</h3>
-      <input type="link" placeholder="Your Name" id="input-field" />
-      <button id="change-profile-picture-button">Save</button>
+    <div class="modal" id="edit-profile-pic-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close-button"></button>
+        <p class="modal__heading">Change profile picture</p>
+
+        <form
+          class="modal__form"
+          id="edit-profile-picture-form"
+          name="edit-profile-picture-form"
+        >
+          <input
+            type="url"
+            id="edit-profile-picture-url"
+            name="description"
+            class="modal__input"
+            placeholder="Image link"
+            required
+          />
+          <span class="modal__error" id="add-card-input-url-error"></span>
+
+          <button class="modal__button" disabled>Create</button>
+        </form>
+      </div>
     </div>
-  </div> -->
 
     <template id="card-template">
       <li class="card">

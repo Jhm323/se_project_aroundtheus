@@ -29,6 +29,10 @@ export default class Card {
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ name: this._name, link: this._link });
     });
+
+    // this._modalButton.addEventListener("click", () =>
+    //   openConfirmDeleteModal(this._id)
+    // );
   }
 
   // _handleDeleteCard() {

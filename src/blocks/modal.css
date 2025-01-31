@@ -173,11 +173,11 @@
   max-height: 181px;
 }
 
-#modal__container-delete-confirm {
+/* #modal__container-delete-confirm {
   color: #fff;
-}
+} */
 
-#delete-confirm-text {
+/* #delete-confirm-text {
   max-width: 358px;
   max-height: 23px;
   color: #000;
@@ -188,9 +188,9 @@
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-}
+} */
 
-.delete-confirm-button {
+/* .delete-confirm-button {
   max-width: 358px;
   max-height: 50px;
   color: #000;
@@ -201,7 +201,7 @@
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-}
+} */
 
 @media screen and (max-width: 730px) {
   .modal__image-preview {
