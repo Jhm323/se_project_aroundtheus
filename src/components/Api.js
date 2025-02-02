@@ -42,28 +42,21 @@ export default class Api {
     }).then((response) => response.json()); // Parse the response as JSON
   }
 
-  addNewCard() {
+  addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
 
       body: JSON.stringify({
-        name: "Big Cat",
-        link: "https://ids.si.edu/ids/deliveryService?max_w=550&id=NZP-20140817-6602RG-000003",
+        name: name,
+        link: link,
       }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // Parse the JSON response from the server
-      })
-      .then((data) => {
-        console.log("Card created successfully:", data);
-      })
-      .catch((error) => {
-        console.error("There was an error with the fetch operation:", error);
-      });
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json(); // Parse the JSON response from the server
+    });
   }
 
   deleteCard(cardId) {

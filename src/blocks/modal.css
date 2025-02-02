@@ -23,12 +23,30 @@
 }
 
 .modal__container {
+  color: #fff;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  margin: auto;
+  padding-top: 10px;
+  width: 358px;
+  height: 258px;
   background-color: #fff;
   padding: 36px;
   border-radius: 10px;
-  position: relative;
-  width: 358px;
-  height: 258px;
+}
+
+/* delete confirm modal */
+#confirm-delete-modal {
+  background-color: #fff;
+  padding: 0px;
+  border-radius: 10px;
+  position: fixed;
+  width: 430px;
+  height: 181px;
+  position-area: center;
 }
 
 .modal__close {
@@ -36,14 +54,19 @@
   background-color: transparent;
   width: 40px;
   height: 40px;
-  top: -50px;
-  right: -50px;
+  top: 145px;
+  right: 145px;
   position: absolute;
   background-image: url(../images/Close__Icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   cursor: pointer;
+}
+
+.modal__close-confirm-delete {
+  top: -45px;
+  right: -45px;
 }
 
 .modal__heading {
@@ -166,42 +189,6 @@
 .form__submit_inactive {
   opacity: 0.1;
 }
-
-/* delete confirm modal */
-#delete-confirm-modal {
-  max-width: 430px;
-  max-height: 181px;
-}
-
-/* #modal__container-delete-confirm {
-  color: #fff;
-} */
-
-/* #delete-confirm-text {
-  max-width: 358px;
-  max-height: 23px;
-  color: #000;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 29.05px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-} */
-
-/* .delete-confirm-button {
-  max-width: 358px;
-  max-height: 50px;
-  color: #000;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.78px;
-  text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-} */
 
 @media screen and (max-width: 730px) {
   .modal__image-preview {

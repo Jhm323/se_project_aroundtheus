@@ -1,5 +1,4 @@
 // Imports //////////////////////////////////////////////////
-
 import "../pages/index.css";
 import "../utils/constants.js";
 import Card from "../components/Card.js";
@@ -26,7 +25,6 @@ export const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 // Profile form const /////////////////////////////////////
-
 export const profileForm = document.forms["profile-form"];
 export const profileEditModal = document.querySelector("#profile-edit-modal");
 export const profileEditButton = document.querySelector("#profile-edit-button");
@@ -44,7 +42,6 @@ export const bioInput = profileForm.querySelector(
 export const formInputElement = document.querySelector(".modal__input");
 
 // Preview modal const ///////////////////////////////////////
-
 export const previewModal = document.querySelector("#preview-image-modal");
 export const previewModalImage = document.querySelector(
   ".modal__image-preview"
@@ -57,7 +54,6 @@ export const previewModalCloseButton = previewModal.querySelector(
 );
 
 // Add Card modal const ///////////////////////////////////////////
-
 export const addNewCardButton = document.querySelector("#new-card-button");
 export const addNewCardModal = document.querySelector("#add-card-modal");
 export const addNewCardFrom = document.forms["add-card-form"];
@@ -73,12 +69,6 @@ export const cardImage = document.querySelector(".card__image");
 export const addNewCardInputUrl = addNewCardFrom.querySelector(
   "#add-card-input-url"
 );
-
-// // Confirm Delete Modal /////////////////////////////
-// export const confirmDeleteModal = document.querySelector(
-//   "#confirm-delete-modal"
-// );
-
 // New Classes /////////////////////////////////////////////////
 
 const editProfilePopup = new PopupWithForm(
@@ -102,7 +92,6 @@ const userInfo = new UserInfo(".profile__title", ".profile__description");
 
 const cardList = new Section(
   {
-    // items: initialCards,
     renderer: (cardData) => {
       const card = generateCard(cardData);
       cardList.addItem(card);
@@ -110,6 +99,59 @@ const cardList = new Section(
   },
   ".cards__list"
 );
+
+const confirmDeleteModal = new Popup({
+  popupSelector: "#confirm-delete-modal",
+});
+
+const editFormValidator = new FormValidator(config, profileForm);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(config, addNewCardFrom);
+addFormValidator.enableValidation();
+
+function generateCard(cardData) {
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handlePreviewModal,
+    handleDeleteClick
+  );
+  return card.generateCard();
+}
+
+// const editProfilePicPopup = new PopupWithForm(
+//   { popupSelector: "#edit-profile-pic-modal" },
+//   handleEditProfilePicSubmit
+// );
+// editProfilePicPopup.setEventListeners();
+
+// Edit Avatar Modal///////////////////////////////////////////
+export const avatarEditModal = document.querySelector(
+  "#profile-image-edit-modal"
+);
+export const profileAvatar = document.querySelector(".profile__image");
+export const avatarButton = document.querySelector(".profile__image-edit");
+avatarButton.addEventListener("click", () => avatarPopup.open());
+
+// const avatarPopup = new PopupWithForm("#profile-image-edit-modal", (value) => {
+//   avatarPopup.renderLoading(true);
+//   api
+//     .updateProfileAvatar(value.avatar)
+//     .then((value) => {
+//       userInfo.setAvatar(value.avatar);
+//       avatarPopup.close();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     })
+//     .finally(() => {
+//       avatarPopup.renderLoading(false, "Save");
+//     });
+// });
+
+// avatarPopup.setEventListeners();
+// avatarFormValidator.disableButton();
 
 // Profile Edit Modal /////////////////////////////////////////
 
@@ -124,36 +166,33 @@ function openProfileEditModal() {
 function handleProfileEditSubmit(inputs) {
   const name = inputs.title;
   const description = inputs.description;
-  console.log(inputs, name, description);
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
 }
 
 profileEditButton.addEventListener("click", openProfileEditModal);
 
+// Edit Profile Picture Modal//////////////////////////////////////
+
+// profilePicture.addEventListener("click", () => editProfilePicPopup.open());
+
+// Export const profilePicture = document.querySelector();
+
 // Add New Card Modal /////////////////////////////////////////////
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 
-function handleAddNewCardSubmit(inputs) {
-  const cardData = {
-    name: inputs.title,
-    link: inputs.description,
-  };
-
-  createCard(cardData);
-  newCardPopup.close();
-  addFormValidator.disableButton();
-}
-
-function generateCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    handlePreviewModal,
-    handleDeleteClick
-  );
-  return card.generateCard();
+function handleAddNewCardSubmit(cardData) {
+  api
+    .addNewCard(cardData)
+    .then((card) => {
+      createCard(card);
+      newCardPopup.close();
+      addFormValidator.disableButton();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 function createCard(cardData) {
@@ -168,33 +207,18 @@ function handlePreviewModal(data) {
   });
 }
 
-const confirmDeleteModal = new Popup({
-  popupSelector: "#confirm-delete-modal",
-});
-
-function handleDeleteClick(cardId) {
-  confirmDeleteModal.setHandleDelete(openConfirmDeleteModal, cardId);
+function handleDeleteClick(card) {
+  confirmDeleteModal.setHandleDelete(openConfirmDeleteModal, card);
   confirmDeleteModal.open();
 }
 
-function openConfirmDeleteModal(cardId) {
-  api.deleteCard(cardId).then((result) => {
-    console.log(result);
+function openConfirmDeleteModal(card) {
+  api.deleteCard(card._id).then((result) => {
+    card.handleDeleteCard();
   });
 }
 
-// const confirmDeleteButton = confirmDeleteModal.querySelector(
-//   "confirm-delete-button"
-// );
-
-// confirmDeleteButton.addEventListener("click", () => openConfirmDeleteModal());
-
-const editFormValidator = new FormValidator(config, profileForm);
-editFormValidator.enableValidation();
-
-const addFormValidator = new FormValidator(config, addNewCardFrom);
-addFormValidator.enableValidation();
-
 api.getInitialCards().then((result) => {
+  console.log("Cards on server: ", result.length);
   cardList.renderItems(result);
 });

@@ -39,12 +39,10 @@ export default class Popup {
       }
     });
     this._popupElement.addEventListener("keydown", (event) => {
-      console.log("escapeKeyPress active");
       this._handleEscKeyPress(event);
     });
 
     this._popupElement.addEventListener("click", (event) => {
-      console.log("handleModalOverlay active");
       this._handleModalOverlay(event);
     });
   }
