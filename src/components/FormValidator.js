@@ -5,7 +5,6 @@ export default class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClassSelector = config.inputErrorClassSelector;
     this._errorClass = config.errorClass;
-
     this._formElement = formElement;
   }
 

@@ -24,7 +24,7 @@ const api = new Api({
 export const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-// Profile form const /////////////////////////////////////
+// Profile Form Const /////////////////////////////////////
 export const profileForm = document.forms["profile-form"];
 export const profileEditModal = document.querySelector("#profile-edit-modal");
 export const profileEditButton = document.querySelector("#profile-edit-button");
@@ -41,7 +41,7 @@ export const bioInput = profileForm.querySelector(
 );
 export const formInputElement = document.querySelector(".modal__input");
 
-// Preview modal const ///////////////////////////////////////
+// Preview Modal Const ///////////////////////////////////////
 export const previewModal = document.querySelector("#preview-image-modal");
 export const previewModalImage = document.querySelector(
   ".modal__image-preview"
@@ -53,29 +53,38 @@ export const previewModalCloseButton = previewModal.querySelector(
   "#modal-close-button"
 );
 
-// Add Card modal const ///////////////////////////////////////////
+// Add Card Modal Const ///////////////////////////////////////////
 export const addNewCardButton = document.querySelector("#new-card-button");
 export const addNewCardModal = document.querySelector("#add-card-modal");
-export const addNewCardFrom = document.forms["add-card-form"];
+export const addNewCardForm = document.forms["add-card-form"];
 export const addNewCardModalCloseButton = addNewCardModal.querySelector(
   "#modal-close-button"
 );
 export const cardsList = document.querySelector(".cards__list");
 export const cardTitle = document.querySelector(".card__title");
-export const addNewCardInputTitle = addNewCardFrom.querySelector(
+export const addNewCardInputTitle = addNewCardForm.querySelector(
   "#add-card-input-title"
 );
 export const cardImage = document.querySelector(".card__image");
-export const addNewCardInputUrl = addNewCardFrom.querySelector(
+export const addNewCardInputUrl = addNewCardForm.querySelector(
   "#add-card-input-url"
 );
+// Avatar Edit Modal Const ///////////////////////////////////////////
+export const avatarButton = document.querySelector(".profile__image-edit");
+export const editAvatarForm = document.querySelector(
+  "#edit-profile-picture-form"
+);
+
 // New Classes /////////////////////////////////////////////////
 
+// New Class Edit Profile Popup
 const editProfilePopup = new PopupWithForm(
   { popupSelector: "#profile-edit-modal" },
   handleProfileEditSubmit
 );
 editProfilePopup.setEventListeners();
+
+// New class New Card Popup
 
 const newCardPopup = new PopupWithForm(
   { popupSelector: "#add-card-modal" },
@@ -83,12 +92,18 @@ const newCardPopup = new PopupWithForm(
 );
 newCardPopup.setEventListeners();
 
+// New Class Image Preview Popup
+
 const imagePreviewPopup = new PopupWithImage({
   popupSelector: "#preview-image-modal",
 });
 imagePreviewPopup.setEventListeners();
 
+// New Class User Info
+
 const userInfo = new UserInfo(".profile__title", ".profile__description");
+
+// New Class Section
 
 const cardList = new Section(
   {
@@ -100,16 +115,25 @@ const cardList = new Section(
   ".cards__list"
 );
 
+// New Class Confirm Delete Popup
+
 const confirmDeleteModal = new Popup({
   popupSelector: "#confirm-delete-modal",
 });
 confirmDeleteModal.setEventListeners();
 
+// New class New Form Validator
+
 const editFormValidator = new FormValidator(config, profileForm);
 editFormValidator.enableValidation();
 
-const addFormValidator = new FormValidator(config, addNewCardFrom);
+const addFormValidator = new FormValidator(config, addNewCardForm);
 addFormValidator.enableValidation();
+
+const avatarFormValidator = new FormValidator(config, editAvatarForm);
+avatarFormValidator.enableValidation();
+
+// New Class New Card
 
 function generateCard(cardData) {
   const card = new Card(
@@ -123,13 +147,6 @@ function generateCard(cardData) {
 }
 
 // Edit Avatar Modal///////////////////////////////////////////
-export const avatarEditModal = document.querySelector(
-  "#profile-image-edit-modal"
-);
-export const profileAvatar = document.querySelector(".profile__image");
-export const avatarButton = document.querySelector(".profile__image-edit");
-avatarButton.addEventListener("click", () => avatarPopup.open());
-
 function handleAvatarSubmit(value) {
   //        Shows a loading indicator while updating the avatar.
   avatarPopup.renderLoading(true);
@@ -138,7 +155,7 @@ function handleAvatarSubmit(value) {
     //       Updates the UI if the request is successful.
     .updateProfileAvatar(value.avatar)
     .then((value) => {
-      console.log("pic submit");
+      console.log("submit");
       userInfo.setAvatar(value.avatar);
       //       Closes the popup upon success.
       avatarPopup.close();
@@ -157,11 +174,9 @@ const avatarPopup = new PopupWithForm(
   { popupSelector: "#profile-image-edit-modal" },
   handleAvatarSubmit
 );
-
-const avatarFormValidator = new FormValidator(config, avatarEditModal);
-avatarFormValidator.enableValidation();
-
 avatarPopup.setEventListeners();
+
+avatarButton.addEventListener("click", () => avatarPopup.open());
 avatarFormValidator.disableButton();
 
 // Profile Edit Modal /////////////////////////////////////////
@@ -180,7 +195,6 @@ function handleProfileEditSubmit(inputs) {
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
 }
-
 profileEditButton.addEventListener("click", openProfileEditModal);
 
 // Add New Card Modal /////////////////////////////////////////////

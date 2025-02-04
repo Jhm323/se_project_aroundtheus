@@ -124,8 +124,8 @@ export default class Api {
       });
   }
 
-  updateProfilePic(avatar) {
-    fetch(`${this._baseUrl}/users/me/avatar`, {
+  updateProfileAvatar(avatar) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar: avatar }),
@@ -135,6 +135,7 @@ export default class Api {
           `Failed to update profile picture. Status: ${response.status}`
         );
       }
+
       return response.json();
     });
   }
