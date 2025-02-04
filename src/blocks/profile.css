@@ -13,6 +13,13 @@
   margin-right: 24px;
 }
 
+.profile__image-edit {
+  background-image: url(../images/edit\ pencil.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
 .profile__info {
   display: grid;
   grid-template-areas:

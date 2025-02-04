@@ -1,9 +1,16 @@
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick, handleDeleteCard) {
+  constructor(
+    cardData,
+    cardSelector,
+    handleImageClick,
+    handleDeleteCard,
+    handleLikeIcon
+  ) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id;
-
+    this._isLiked = cardData.isLiked;
+    this.handleLikeIcon = handleLikeIcon;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCard = handleDeleteCard;
@@ -17,10 +24,14 @@ export default class Card {
     this._cardTitle = this._element.querySelector(".card__title");
   }
 
+  getCardID() {
+    return this._id;
+  }
+
   _setEventListeners() {
-    // this._likeButton.addEventListener("click", () => {
-    //   this._handleLikeIcon(this);
-    // });
+    this._likeButton.addEventListener("click", () => {
+      this.handleLikeIcon(this);
+    });
 
     this._trashButton.addEventListener("click", () => {
       this._handleDeleteCard(this);
@@ -36,7 +47,7 @@ export default class Card {
     this._element = null;
   }
 
-  _handleLikeIcon() {
+  updateLikeIcon() {
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
@@ -45,18 +56,20 @@ export default class Card {
   //   this.renderLikes();
   // }
 
-  // renderLikes() {
-  //   this._cardLikes.textContent = this._likes.length;
-  //   if (this.isLiked()) {
-  //     this._likeButton.classList.add("card__like-button_active");
-  //   } else {
-  //     this._likeButton.classList.remove("card__like-button_active");
-  //   }
-  // }
+  renderLikes() {
+    if (this.isLiked()) {
+      console.log("isLiked add");
+      this._likeButton.classList.add("card__like-button_active");
+    } else {
+      console.log("isLiked remove");
 
-  // isLiked() {
-  //   return this._likes.some(like => like._id === this._userId);
-  // }
+      this._likeButton.classList.remove("card__like-button_active");
+    }
+  }
+
+  isLiked() {
+    return this._isLiked;
+  }
 
   _getTemplate() {
     this._cardElement = document
@@ -71,10 +84,12 @@ export default class Card {
     this._element = this._getTemplate();
     this._findCardElements();
     this._setEventListeners();
-
+    this.renderLikes();
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
+    // if(this.isLiked)
+    //   this._likeButton.classList.add("active")
 
     return this._element;
   }

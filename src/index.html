@@ -27,8 +27,12 @@
             alt="jacques-cousteau"
             class="profile__image"
           />
-          <button class="profile__image-edit" type="button" alt="profile__image-edit"></button>
-        </button>
+          <button
+            class="profile__image-edit"
+            type="button"
+            alt="profile__image-edit"
+          ></button>
+
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -156,7 +160,7 @@
     </div>
 
     <!-- Edit Profile Picture Modal -->
-    <div class="modal" id="edit-profile-pic-modal">
+    <div class="modal" id="profile-image-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
         <p class="modal__heading">Change profile picture</p>
@@ -169,14 +173,14 @@
           <input
             type="url"
             id="edit-profile-picture-url"
-            name="description"
+            name="avatar"
             class="modal__input"
             placeholder="Image link"
             required
           />
-          <span class="modal__error" id="add-card-input-url-error"></span>
+          <span class="modal__error" id="edit-profile-picture-url-error"></span>
 
-          <button class="modal__button" disabled>Create</button>
+          <button type="submit" class="modal__button" disabled>Create</button>
         </form>
       </div>
     </div>

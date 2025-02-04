@@ -103,6 +103,7 @@ const cardList = new Section(
 const confirmDeleteModal = new Popup({
   popupSelector: "#confirm-delete-modal",
 });
+confirmDeleteModal.setEventListeners();
 
 const editFormValidator = new FormValidator(config, profileForm);
 editFormValidator.enableValidation();
@@ -115,16 +116,11 @@ function generateCard(cardData) {
     cardData,
     "#card-template",
     handlePreviewModal,
-    handleDeleteClick
+    handleDeleteClick,
+    handleLikeIcon
   );
   return card.generateCard();
 }
-
-// const editProfilePicPopup = new PopupWithForm(
-//   { popupSelector: "#edit-profile-pic-modal" },
-//   handleEditProfilePicSubmit
-// );
-// editProfilePicPopup.setEventListeners();
 
 // Edit Avatar Modal///////////////////////////////////////////
 export const avatarEditModal = document.querySelector(
@@ -134,23 +130,35 @@ export const profileAvatar = document.querySelector(".profile__image");
 export const avatarButton = document.querySelector(".profile__image-edit");
 avatarButton.addEventListener("click", () => avatarPopup.open());
 
-// const avatarPopup = new PopupWithForm("#profile-image-edit-modal", (value) => {
-//   avatarPopup.renderLoading(true);
-//   api
-//     .updateProfileAvatar(value.avatar)
-//     .then((value) => {
-//       userInfo.setAvatar(value.avatar);
-//       avatarPopup.close();
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     })
-//     .finally(() => {
-//       avatarPopup.renderLoading(false, "Save");
-//     });
-// });
+function handleAvatarSubmit(value) {
+  //        Shows a loading indicator while updating the avatar.
+  // avatarPopup.renderLoading(true);
+  //        Sends the new avatar to the backend via an API call.
+  api
+    //       Updates the UI if the request is successful.
+    .updateProfileAvatar(value.avatar)
+    .then((value) => {
+      console.log("pic submit");
+      userInfo.setAvatar(value.avatar);
+      //       Closes the popup upon success.
+      avatarPopup.close();
+    })
+    //      Logs errors if the request fails.
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      //      Always stops the loading animation at the end.
+      avatarPopup.renderLoading(false, "Save");
+    });
+}
 
-// avatarPopup.setEventListeners();
+const avatarPopup = new PopupWithForm(
+  { popupSelector: "#profile-image-edit-modal" },
+  handleAvatarSubmit
+);
+
+avatarPopup.setEventListeners();
 // avatarFormValidator.disableButton();
 
 // Profile Edit Modal /////////////////////////////////////////
@@ -171,12 +179,6 @@ function handleProfileEditSubmit(inputs) {
 }
 
 profileEditButton.addEventListener("click", openProfileEditModal);
-
-// Edit Profile Picture Modal//////////////////////////////////////
-
-// profilePicture.addEventListener("click", () => editProfilePicPopup.open());
-
-// Export const profilePicture = document.querySelector();
 
 // Add New Card Modal /////////////////////////////////////////////
 
@@ -211,11 +213,23 @@ function handleDeleteClick(card) {
   confirmDeleteModal.setHandleDelete(openConfirmDeleteModal, card);
   confirmDeleteModal.open();
 }
+addNewCardButton.addEventListener("click", () => newCardPopup.open());
 
 function openConfirmDeleteModal(card) {
   api.deleteCard(card._id).then((result) => {
     card.handleDeleteCard();
   });
+}
+
+function handleLikeIcon(card) {
+  api
+    .updateLike(card)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((res) => card.updateLikeIcon());
 }
 
 api.getInitialCards().then((result) => {

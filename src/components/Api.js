@@ -77,6 +77,15 @@ export default class Api {
       });
   }
 
+  updateLike(card) {
+    const cardId = card.getCardID();
+    const method = card.isLiked ? "DELETE" : "PUT";
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: method,
+      headers: this._headers,
+    });
+  }
+
   addLike() {
     fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
@@ -115,26 +124,19 @@ export default class Api {
       });
   }
 
-  updateProfilePic() {
+  updateProfilePic(avatar) {
     fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      avatar: newAvatarUrl,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            `Failed to update profile picture. Status: ${response.status}`
-          );
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Profile picture updated successfully!", data);
-      })
-      .catch((error) => {
-        console.error("Error updating profile picture:", error);
-      });
+      body: JSON.stringify({ avatar: avatar }),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Failed to update profile picture. Status: ${response.status}`
+        );
+      }
+      return response.json();
+    });
   }
 }
 // other methods for working with the API
