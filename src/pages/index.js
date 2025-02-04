@@ -132,7 +132,7 @@ avatarButton.addEventListener("click", () => avatarPopup.open());
 
 function handleAvatarSubmit(value) {
   //        Shows a loading indicator while updating the avatar.
-  // avatarPopup.renderLoading(true);
+  avatarPopup.renderLoading(true);
   //        Sends the new avatar to the backend via an API call.
   api
     //       Updates the UI if the request is successful.
@@ -158,8 +158,11 @@ const avatarPopup = new PopupWithForm(
   handleAvatarSubmit
 );
 
+const avatarFormValidator = new FormValidator(config, avatarEditModal);
+avatarFormValidator.enableValidation();
+
 avatarPopup.setEventListeners();
-// avatarFormValidator.disableButton();
+avatarFormValidator.disableButton();
 
 // Profile Edit Modal /////////////////////////////////////////
 
