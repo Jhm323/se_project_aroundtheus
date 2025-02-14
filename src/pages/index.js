@@ -101,7 +101,15 @@ imagePreviewPopup.setEventListeners();
 
 // New Class User Info
 
-const userInfo = new UserInfo(".profile__title", ".profile__description");
+const userInfo = new UserInfo({
+  // Profile Config: define profile name selector
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+  avatarSelector: ".profile__image",
+  // userNameSelector: ".profile__title",
+  // userDescriptionSelctor: ".profile__description",
+  // userImageSelector: ".profile__image",
+});
 
 // New Class Section
 
@@ -148,6 +156,7 @@ function generateCard(cardData) {
 
 // Edit Avatar Modal///////////////////////////////////////////
 function handleAvatarSubmit(value) {
+  console.log(value);
   //        Shows a loading indicator while updating the avatar.
   avatarPopup.renderLoading(true);
   //        Sends the new avatar to the backend via an API call.
@@ -188,14 +197,32 @@ function openProfileEditModal() {
   bioInput.value = currentUserInfo.description;
   editFormValidator.resetValidation();
 }
+profileEditButton.addEventListener("click", openProfileEditModal);
 
 function handleProfileEditSubmit(inputs) {
+  console.log(inputs.description);
   const name = inputs.title;
-  const description = inputs.description;
-  userInfo.setUserInfo(name, description);
-  editProfilePopup.close();
+  const about = inputs.description;
+  api
+    .setUserInfo({ name, about })
+    .then((info) => {
+      userInfo.setUserInfo(info);
+      editProfilePopup.close();
+    })
+    // api
+    // .editProfile(userInfo)
+    // .then((data) => {
+    // userInfo.setUserInfo(name, description);
+    // })
+    .catch((error) => {
+      console.log(error);
+    });
 }
-profileEditButton.addEventListener("click", openProfileEditModal);
+// submit data to server/API : api.editProfile
+// if success, then update userInfo
+// then block: userInfo.setUserInfo(name, description);
+// editProfilePopup.close();
+// catch : console.log error
 
 // Add New Card Modal /////////////////////////////////////////////
 
@@ -252,4 +279,10 @@ function handleLikeIcon(card) {
 api.getInitialCards().then((result) => {
   console.log("Cards on server: ", result.length);
   cardList.renderItems(result);
+});
+
+api.getUserInfo().then((userData) => {
+  console.log(userData);
+  userInfo.setUserInfo(userData.name, userData.about);
+  userInfo.setAvatar(userData.avatar);
 });
