@@ -51,20 +51,18 @@ export default class Card {
     this._likeButton.classList.toggle("card__like-button_active");
   }
 
-  // updateLikes(likes) {
-  //   this._likes = likes;
-  //   this.renderLikes();
-  // }
-
   renderLikes() {
     if (this.isLiked()) {
       console.log("isLiked add");
       this._likeButton.classList.add("card__like-button_active");
     } else {
       console.log("isLiked remove");
-
       this._likeButton.classList.remove("card__like-button_active");
     }
+  }
+
+  reverseIsLiked() {
+    this._isLiked = !this._isLiked;
   }
 
   isLiked() {
@@ -88,9 +86,6 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;
-    // if(this.isLiked)
-    //   this._likeButton.classList.add("active")
-
     return this._element;
   }
 }

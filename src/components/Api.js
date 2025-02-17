@@ -4,8 +4,6 @@ export default class Api {
     this._headers = headers;
   }
 
-  // const cardId =  ${cardId} //cardId input
-
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
@@ -21,8 +19,6 @@ export default class Api {
         console.error(err); // log the error to the console
       });
   }
-
-  // function () promise.all();
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -87,7 +83,7 @@ export default class Api {
 
   updateLike(card) {
     const cardId = card.getCardID();
-    const method = card.isLiked ? "DELETE" : "PUT";
+    const method = card.isLiked() ? "DELETE" : "PUT";
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: method,
       headers: this._headers,
@@ -148,8 +144,3 @@ export default class Api {
     });
   }
 }
-// other methods for working with the API
-//    load app
-//      request data from server
-//        update the app to display from server
-//  "Create-Read-Update-Delete"

@@ -269,7 +269,13 @@ function handleLikeIcon(card) {
         return res.json();
       }
     })
-    .then((res) => card.updateLikeIcon());
+    .then((res) => {
+      card.reverseIsLiked(); //change false to true or vice versa
+      card.renderLikes();
+    })
+    .catch((error) => {
+      console.error("like error", error);
+    });
 }
 
 api.getInitialCards().then((result) => {
