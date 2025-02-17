@@ -10,6 +10,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import { initialCards, config } from "../utils/constants.js";
 import Api from "../components/Api.js";
+import { info } from "autoprefixer";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -70,7 +71,7 @@ export const addNewCardInputUrl = addNewCardForm.querySelector(
   "#add-card-input-url"
 );
 // Avatar Edit Modal Const ///////////////////////////////////////////
-export const avatarButton = document.querySelector(".profile__image-edit");
+export const avatarButton = document.querySelector(".profile__image-button");
 export const editAvatarForm = document.querySelector(
   "#edit-profile-picture-form"
 );
@@ -102,13 +103,9 @@ imagePreviewPopup.setEventListeners();
 // New Class User Info
 
 const userInfo = new UserInfo({
-  // Profile Config: define profile name selector
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
   avatarSelector: ".profile__image",
-  // userNameSelector: ".profile__title",
-  // userDescriptionSelctor: ".profile__description",
-  // userImageSelector: ".profile__image",
 });
 
 // New Class Section
@@ -164,7 +161,6 @@ function handleAvatarSubmit(value) {
     //       Updates the UI if the request is successful.
     .updateProfileAvatar(value.avatar)
     .then((value) => {
-      console.log("submit");
       userInfo.setAvatar(value.avatar);
       //       Closes the popup upon success.
       avatarPopup.close();
@@ -200,35 +196,29 @@ function openProfileEditModal() {
 profileEditButton.addEventListener("click", openProfileEditModal);
 
 function handleProfileEditSubmit(inputs) {
-  console.log(inputs.description);
   const name = inputs.title;
   const about = inputs.description;
+  editProfilePopup.renderLoading(true);
   api
     .setUserInfo({ name, about })
     .then((info) => {
       userInfo.setUserInfo(info);
       editProfilePopup.close();
     })
-    // api
-    // .editProfile(userInfo)
-    // .then((data) => {
-    // userInfo.setUserInfo(name, description);
-    // })
     .catch((error) => {
       console.log(error);
+    })
+    .finally(() => {
+      editProfilePopup.renderLoading(false);
     });
 }
-// submit data to server/API : api.editProfile
-// if success, then update userInfo
-// then block: userInfo.setUserInfo(name, description);
-// editProfilePopup.close();
-// catch : console.log error
 
 // Add New Card Modal /////////////////////////////////////////////
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 
 function handleAddNewCardSubmit(cardData) {
+  newCardPopup.renderLoading(true);
   api
     .addNewCard(cardData)
     .then((card) => {
@@ -238,6 +228,9 @@ function handleAddNewCardSubmit(cardData) {
     })
     .catch((error) => {
       console.log(error);
+    })
+    .finally(() => {
+      newCardPopup.renderLoading(false);
     });
 }
 
@@ -282,7 +275,7 @@ api.getInitialCards().then((result) => {
 });
 
 api.getUserInfo().then((userData) => {
-  console.log(userData);
-  userInfo.setUserInfo(userData.name, userData.about);
+  console.log("userData", userData);
+  userInfo.setUserInfo(userData);
   userInfo.setAvatar(userData.avatar);
 });

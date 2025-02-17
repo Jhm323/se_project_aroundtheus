@@ -36,6 +36,7 @@
   background-color: #fff;
   padding: 36px;
   border-radius: 10px;
+  position: relative;
 }
 
 /* delete confirm modal */
@@ -63,19 +64,6 @@
   background-size: contain;
   cursor: pointer;
 }
-
-/* .modal__close modal__close-add-new-card {
-  top: -45px;
-  right: -45px;
-}
-.modal__close-edit-pofile {
-  top: 145px;
-  right: 145px;
-}
-.modal__close modal__close-confirm-delete {
-  top: -45px;
-  right: -45px;
-} */
 
 .modal__heading {
   color: black;

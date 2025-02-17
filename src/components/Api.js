@@ -36,8 +36,8 @@ export default class Api {
       headers: this._headers,
 
       body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        about: "Physicist and Chemist",
+        name: name,
+        about: description,
       }),
     }).then((response) => response.json()); // Parse the response as JSON
   }

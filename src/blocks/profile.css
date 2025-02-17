@@ -13,11 +13,45 @@
   margin-right: 24px;
 }
 
-.profile__image-edit {
+/* .profile__image-edit {
   background-image: url(../images/edit\ pencil.png);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  position: relative;
+  top: 5px;
+  left: -90px;
+} */
+
+.profile__image-button {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  display: inline-block;
+}
+
+.profile__edit-icon {
+  position: absolute;
+  top: 40%;
+  right: 40%;
+  width: 26px;
+  height: 26px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility and opacity */
+}
+
+.profile__image-button:hover .profile__image {
+  opacity: 0.5;
+}
+
+.profile__image-button:hover .profile__edit-icon {
+  visibility: visible;
+  opacity: 1;
 }
 
 .profile__info {

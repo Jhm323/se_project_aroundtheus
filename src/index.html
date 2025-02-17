@@ -22,16 +22,23 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpeg')%>"
-            alt="jacques-cousteau"
-            class="profile__image"
-          />
           <button
-            class="profile__image-edit"
+            class="profile__image-button"
             type="button"
-            alt="profile__image-edit"
-          ></button>
+            alt="profile__image-button"
+          >
+            <img
+              src="<%=require('./images/jacques-cousteau.jpeg')%>"
+              alt="jacques-cousteau"
+              class="profile__image"
+            />
+
+            <img
+              class="profile__edit-icon"
+              src="<%=require('./images/edit_icon.svg')%>"
+              alt=" Profile Hover Icon"
+            />
+          </button>
 
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
