@@ -47,14 +47,4 @@ export default class Popup {
       this._handleModalOverlay(event);
     });
   }
-
-  setHandleDelete(handleDelete, cardId) {
-    this._popupElement
-      .querySelector(".modal__form")
-      .addEventListener("submit", (event) => {
-        event.preventDefault();
-        handleDelete(cardId);
-        this.close();
-      });
-  }
 }

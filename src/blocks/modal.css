@@ -39,15 +39,19 @@
   position: relative;
 }
 
-/* delete confirm modal */
-#confirm-delete-modal {
-  background-color: #fff;
-  padding: 0px;
-  border-radius: 10px;
+.modal__container-confirm-delete {
+  padding: 36px;
   position: fixed;
-  width: 430px;
-  height: 181px;
+  width: 358px;
+  height: 109px;
   position-area: center;
+}
+
+.modal__container-edit-avatar {
+  padding: 36px;
+  position: fixed;
+  width: 358px;
+  height: 200px;
 }
 
 .modal__close {
@@ -76,6 +80,10 @@
   height: 23px;
   margin: 0px;
   margin-bottom: 54px;
+}
+
+.modal__heading-confirm-delete {
+  margin-bottom: 38px;
 }
 
 .modal__form {
@@ -261,5 +269,13 @@
 
   .modal__button {
     font-size: 14px;
+  }
+
+  /* confirm delete modal */
+  #confirm-delete-modal {
+    max-width: 238px;
+    max-height: 272px;
+    margin: 0 auto;
+    padding: 25px 22px;
   }
 }

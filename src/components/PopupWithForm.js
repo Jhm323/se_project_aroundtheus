@@ -9,12 +9,8 @@ export default class PopupWithForm extends Popup {
     this._saveButton = this._popupForm.querySelector(".modal__button");
   }
 
-  renderLoading(isLoading) {
-    if (isLoading) {
-      this._saveButton.textContent = "Loading...";
-    } else {
-      this._saveButton.textContent = "Yes";
-    }
+  onSubmit(handler) {
+    this._handleFormSubmit = handler;
   }
 
   renderLoading(isLoading, saveButtonText) {
@@ -37,9 +33,18 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      console.log("submit");
       this._handleFormSubmit(this._getInputValues());
       this._popupForm.reset();
     });
+  }
+
+  setHandleDelete(handleDelete, cardId) {
+    this._popupElement
+      .querySelector(".modal__form")
+      .addEventListener("submit", (event) => {
+        event.preventDefault();
+        handleDelete(cardId);
+        this.close();
+      });
   }
 }

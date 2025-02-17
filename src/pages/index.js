@@ -122,7 +122,7 @@ const cardList = new Section(
 
 // New Class Confirm Delete Popup
 
-const confirmDeleteModal = new Popup({
+const confirmDeleteModal = new PopupWithForm({
   popupSelector: "#confirm-delete-modal",
 });
 confirmDeleteModal.setEventListeners();
@@ -230,7 +230,7 @@ function handleAddNewCardSubmit(cardData) {
       console.log(error);
     })
     .finally(() => {
-      newCardPopup.renderLoading(false);
+      newCardPopup.renderLoading(false, "Save");
     });
 }
 
@@ -247,15 +247,18 @@ function handlePreviewModal(data) {
 }
 
 function handleDeleteClick(card) {
-  confirmDeleteModal.setHandleDelete(openConfirmDeleteModal, card);
+  confirmDeleteModal.onSubmit(() => {
+    deleteCard(card);
+  });
   confirmDeleteModal.open();
 }
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 
-function openConfirmDeleteModal(card) {
+function deleteCard(card) {
   api.deleteCard(card._id).then((result) => {
     card.handleDeleteCard();
   });
+  confirmDeleteModal.close();
 }
 
 function handleLikeIcon(card) {
