@@ -7,17 +7,27 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = this._popupForm.querySelectorAll(".modal__input");
     this._saveButton = this._popupForm.querySelector(".modal__button");
+    this._submitBtnText = this._saveButton.textContent;
   }
 
   onSubmit(handler) {
     this._handleFormSubmit = handler;
   }
 
-  renderLoading(isLoading, saveButtonText) {
+  // renderLoading(isLoading, saveButtonText) {
+  //   if (isLoading) {
+  //     this._saveButton.textContent = "Saving...";
+  //   } else {
+  //     this._saveButton.textContent = saveButtonText;
+  //   }
+  // }
+
+  renderLoading(isLoading, loadingText = "Saving...") {
     if (isLoading) {
-      this._saveButton.textContent = "Saving...";
+      this._saveButton.textContent = loadingText;
     } else {
-      this._saveButton.textContent = saveButtonText;
+      //return back the initial text.
+      this._saveButton.textContent = this._submitBtnText;
     }
   }
 
@@ -34,17 +44,17 @@ export default class PopupWithForm extends Popup {
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this._popupForm.reset();
+      // this._popupForm.reset();
     });
   }
 
-  setHandleDelete(handleDelete, cardId) {
-    this._popupElement
-      .querySelector(".modal__form")
-      .addEventListener("submit", (event) => {
-        event.preventDefault();
-        handleDelete(cardId);
-        this.close();
-      });
-  }
+  // setHandleDelete(handleDelete, cardId) {
+  //   this._popupElement
+  //     .querySelector(".modal__form")
+  //     .addEventListener("submit", (event) => {
+  //       event.preventDefault();
+  //       handleDelete(cardId);
+  //       this.close();
+  //     });
+  // }
 }

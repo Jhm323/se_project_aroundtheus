@@ -11,6 +11,7 @@ import UserInfo from "../components/UserInfo.js";
 import { initialCards, config } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import { info } from "autoprefixer";
+import PopupConfirmation from "../components/PopupConfirmation.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -78,6 +79,13 @@ export const editAvatarForm = document.querySelector(
 
 // New Classes /////////////////////////////////////////////////
 
+// New PopupConfirmation
+
+const popupConfirmation = new PopupConfirmation({
+  popupSelector: "#confirm-delete-modal",
+});
+popupConfirmation.setEventListeners();
+
 // New Class Edit Profile Popup
 const editProfilePopup = new PopupWithForm(
   { popupSelector: "#profile-edit-modal" },
@@ -113,8 +121,7 @@ const userInfo = new UserInfo({
 const cardList = new Section(
   {
     renderer: (cardData) => {
-      const card = generateCard(cardData);
-      cardList.addItem(card);
+      createCard(cardData);
     },
   },
   ".cards__list"
@@ -163,6 +170,9 @@ function handleAvatarSubmit(value) {
     .then((value) => {
       userInfo.setAvatar(value.avatar);
       //       Closes the popup upon success.
+      avatarPopup.close();
+      editAvatarForm.reset();
+      avatarFormValidator.disableButton();
       avatarPopup.close();
     })
     //      Logs errors if the request fails.
@@ -225,6 +235,7 @@ function handleAddNewCardSubmit(cardData) {
       createCard(card);
       newCardPopup.close();
       addFormValidator.disableButton();
+      addNewCardForm.reset();
     })
     .catch((error) => {
       console.log(error);
@@ -255,20 +266,22 @@ function handleDeleteClick(card) {
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 
 function deleteCard(card) {
-  api.deleteCard(card._id).then((result) => {
-    card.handleDeleteCard();
-  });
-  confirmDeleteModal.close();
+  api
+    .deleteCard(card._id)
+    .then((result) => {
+      card.handleDeleteCard();
+    })
+    .then((res) => {
+      confirmDeleteModal.close();
+    })
+    .catch((error) => {
+      console.error("like error", error);
+    });
 }
 
 function handleLikeIcon(card) {
   api
     .updateLike(card)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
     .then((res) => {
       card.reverseIsLiked(); //change false to true or vice versa
       card.renderLikes();

@@ -39,12 +39,5 @@ export default class Popup {
         this.close();
       }
     });
-    this._popupElement.addEventListener("keydown", (event) => {
-      this._handleEscKeyPress(event);
-    });
-
-    this._popupElement.addEventListener("click", (event) => {
-      this._handleModalOverlay(event);
-    });
   }
 }

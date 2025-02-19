@@ -131,6 +131,7 @@
   text-align: left;
   color: red;
   position: absolute;
+  top: 145px;
 }
 
 .modal__error:first-of-type {

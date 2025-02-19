@@ -5,29 +5,19 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject(`Unexpected Error: ${res.status}`);
-        }
-      })
-      .catch((err) => {
-        console.error(err); // log the error to the console
-      });
+    });
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then((response) => response.json()); // Parse the response as JSON
+    });
   }
 
   editProfile() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
 
@@ -35,11 +25,11 @@ export default class Api {
         name: name,
         about: description,
       }),
-    }).then((response) => response.json()); // Parse the response as JSON
+    });
   }
 
   addNewCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
 
@@ -47,100 +37,74 @@ export default class Api {
         name: name,
         link: link,
       }),
-    }).then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json(); // Parse the JSON response from the server
+    });
+  }
+
+  addNewCard({ name, link }) {
+    return this._request(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
     });
   }
 
   setUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ name, about }),
-    }).then((res) => res.json());
+    });
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return this._request(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to delete the card");
-        }
-        console.log("Card deleted successfully:");
-        return response.json(); // Parse the JSON response from the server
-      })
-
-      .catch((error) => {
-        console.error("There was an error with the DELETE request:", error);
-      });
+    });
   }
 
   updateLike(card) {
     const cardId = card.getCardID();
     const method = card.isLiked() ? "DELETE" : "PUT";
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: method,
       headers: this._headers,
     });
   }
 
   addLike() {
-    fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to like the card");
-        }
-        return response.json(); // Parse the JSON response from the server
-      })
-      .then((data) => {
-        console.log("Card liked successfully:", data);
-      })
-      .catch((error) => {
-        console.error("There was an error with the PUT request:", error);
-      });
+    });
   }
 
   removeLike() {
-    fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to like the card");
-        }
-        return response.json(); // Parse the JSON response from the server
-      })
-      .then((data) => {
-        console.log("Card liked successfully:", data);
-      })
-      .catch((error) => {
-        console.error("There was an error with the PUT request:", error);
-      });
+    });
   }
 
   updateProfileAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar: avatar }),
-    }).then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `Failed to update profile picture. Status: ${response.status}`
-        );
-      }
-
-      return response.json();
     });
+  }
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Unexpected Error: ${res.status}`);
   }
 }
