@@ -14,14 +14,6 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handler;
   }
 
-  // renderLoading(isLoading, saveButtonText) {
-  //   if (isLoading) {
-  //     this._saveButton.textContent = "Saving...";
-  //   } else {
-  //     this._saveButton.textContent = saveButtonText;
-  //   }
-  // }
-
   renderLoading(isLoading, loadingText = "Saving...") {
     if (isLoading) {
       this._saveButton.textContent = loadingText;
@@ -44,17 +36,6 @@ export default class PopupWithForm extends Popup {
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      // this._popupForm.reset();
     });
   }
-
-  // setHandleDelete(handleDelete, cardId) {
-  //   this._popupElement
-  //     .querySelector(".modal__form")
-  //     .addEventListener("submit", (event) => {
-  //       event.preventDefault();
-  //       handleDelete(cardId);
-  //       this.close();
-  //     });
-  // }
 }

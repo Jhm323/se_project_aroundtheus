@@ -103,7 +103,6 @@
   line-height: 16.94px;
   color: #000;
   text-align: left;
-  position: relative;
   min-height: 27px;
   display: block;
   width: 100%;
@@ -131,14 +130,7 @@
   text-align: left;
   color: red;
   position: absolute;
-  top: 145px;
-}
-
-.modal__error:first-of-type {
-  top: 145px;
-}
-.modal__error:last-of-type {
-  top: 204px;
+  top: 33px;
 }
 
 .modal__button {

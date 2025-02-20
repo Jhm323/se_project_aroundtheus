@@ -80,7 +80,6 @@ export const editAvatarForm = document.querySelector(
 // New Classes /////////////////////////////////////////////////
 
 // New PopupConfirmation
-
 const popupConfirmation = new PopupConfirmation({
   popupSelector: "#confirm-delete-modal",
 });
@@ -90,11 +89,11 @@ popupConfirmation.setEventListeners();
 const editProfilePopup = new PopupWithForm(
   { popupSelector: "#profile-edit-modal" },
   handleProfileEditSubmit
+  // handleProfileFormSubmit
 );
 editProfilePopup.setEventListeners();
 
 // New class New Card Popup
-
 const newCardPopup = new PopupWithForm(
   { popupSelector: "#add-card-modal" },
   handleAddNewCardSubmit
@@ -102,14 +101,12 @@ const newCardPopup = new PopupWithForm(
 newCardPopup.setEventListeners();
 
 // New Class Image Preview Popup
-
 const imagePreviewPopup = new PopupWithImage({
   popupSelector: "#preview-image-modal",
 });
 imagePreviewPopup.setEventListeners();
 
 // New Class User Info
-
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   jobSelector: ".profile__description",
@@ -117,7 +114,6 @@ const userInfo = new UserInfo({
 });
 
 // New Class Section
-
 const cardList = new Section(
   {
     renderer: (cardData) => {
@@ -128,14 +124,12 @@ const cardList = new Section(
 );
 
 // New Class Confirm Delete Popup
-
 const confirmDeleteModal = new PopupWithForm({
   popupSelector: "#confirm-delete-modal",
 });
 confirmDeleteModal.setEventListeners();
 
 // New class New Form Validator
-
 const editFormValidator = new FormValidator(config, profileForm);
 editFormValidator.enableValidation();
 
@@ -146,7 +140,6 @@ const avatarFormValidator = new FormValidator(config, editAvatarForm);
 avatarFormValidator.enableValidation();
 
 // New Class New Card
-
 function generateCard(cardData) {
   const card = new Card(
     cardData,
@@ -195,7 +188,6 @@ avatarButton.addEventListener("click", () => avatarPopup.open());
 avatarFormValidator.disableButton();
 
 // Profile Edit Modal /////////////////////////////////////////
-
 function openProfileEditModal() {
   editProfilePopup.open();
   const currentUserInfo = userInfo.getUserInfo();
@@ -224,7 +216,6 @@ function handleProfileEditSubmit(inputs) {
 }
 
 // Add New Card Modal /////////////////////////////////////////////
-
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 
 function handleAddNewCardSubmit(cardData) {
