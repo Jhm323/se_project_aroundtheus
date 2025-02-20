@@ -166,15 +166,14 @@ function handleAvatarSubmit(value) {
       avatarPopup.close();
       editAvatarForm.reset();
       avatarFormValidator.disableButton();
-      avatarPopup.close();
-    })
-    //      Logs errors if the request fails.
-    .catch((err) => {
-      console.log(err);
     })
     .finally(() => {
       //      Always stops the loading animation at the end.
       avatarPopup.renderLoading(false, "Save");
+    })
+    //      Logs errors if the request fails.
+    .catch((err) => {
+      console.log(err);
     });
 }
 
@@ -207,11 +206,11 @@ function handleProfileEditSubmit(inputs) {
       userInfo.setUserInfo(info);
       editProfilePopup.close();
     })
-    .catch((error) => {
-      console.log(error);
-    })
     .finally(() => {
       editProfilePopup.renderLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
     });
 }
 
@@ -228,11 +227,11 @@ function handleAddNewCardSubmit(cardData) {
       addFormValidator.disableButton();
       addNewCardForm.reset();
     })
-    .catch((error) => {
-      console.log(error);
-    })
     .finally(() => {
       newCardPopup.renderLoading(false, "Save");
+    })
+    .catch((error) => {
+      console.log(error);
     });
 }
 
@@ -282,13 +281,23 @@ function handleLikeIcon(card) {
     });
 }
 
-api.getInitialCards().then((result) => {
-  console.log("Cards on server: ", result.length);
-  cardList.renderItems(result);
-});
+api
+  .getInitialCards()
+  .then((result) => {
+    console.log("Cards on server: ", result.length);
+    cardList.renderItems(result);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
-api.getUserInfo().then((userData) => {
-  console.log("userData", userData);
-  userInfo.setUserInfo(userData);
-  userInfo.setAvatar(userData.avatar);
-});
+api
+  .getUserInfo()
+  .then((userData) => {
+    console.log("userData", userData);
+    userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData.avatar);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
