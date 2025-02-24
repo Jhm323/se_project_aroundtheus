@@ -5,7 +5,6 @@ export default class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClassSelector = config.inputErrorClassSelector;
     this._errorClass = config.errorClass;
-
     this._formElement = formElement;
   }
 
@@ -88,7 +87,6 @@ export default class FormValidator {
   enableValidation() {
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
-      this._formElement.reset();
     });
 
     this._setEventListeners();
