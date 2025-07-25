@@ -2,7 +2,7 @@
 
 Welcome to **Project 3** from the TripleTen Web Development Program! This project demonstrates a responsive, adaptive layout using modern HTML and CSS techniques. Users can explore a profile-based photo gallery, like images, and enjoy a seamless experience across devices.
 
-### [View the project on GitHub Pages](https://yourusername.github.io/se_project_aroundtheus)
+### [View the project on GitHub Pages] (https://github.com/Jhm323/se_project_aroundtheus)
 
 ---
 
