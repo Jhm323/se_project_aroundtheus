@@ -1,188 +1,165 @@
-# Around The U.S. — Responsive Web Project
+# 🌎 Around The U.S. — Responsive Web Project
 
-Welcome to **Project 3** from the TripleTen Web Development Program! This project demonstrates a responsive, adaptive layout using modern HTML and CSS techniques. Users can explore a profile-based photo gallery, like images, and enjoy a seamless experience across devices.
+This project demonstrates a responsive, adaptive layout using modern HTML and CSS. Users can explore a profile-based photo gallery, like images, and enjoy a seamless experience across devices.
 
-### [View the project on GitHub Pages] (https://github.com/Jhm323/se_project_aroundtheus)
+**[View the live project on GitHub Pages](#)**
 
----
+## 🎯 Project Objective
 
-## Table of Contents
+The goal of Around The U.S. is to create a fully responsive and visually polished web page that showcases user-uploaded photographs.
 
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Responsive Design](#responsive-design)
-- [Figma & Design](#figma--design)
-- [Project Setup](#project-setup)
-- [File Structure](#file-structure)
-- [Fonts](#fonts)
-- [Video Walkthrough](#video-walkthrough)
-- [What I Learned](#what-i-learned)
+**Key objectives:**
 
----
+- Implement responsive layouts with Flexbox and CSS Grid
+- Maintain semantic, accessible HTML structure
+- Use BEM methodology for clean, maintainable CSS
+- Ensure smooth scaling and readability on all devices
 
-## Project Overview
+## ⚡ Features
 
-"Around the U.S." is a responsive web page designed to showcase user-uploaded photographs. It mimics the behavior of a small social photo-sharing application. This version focuses on **responsive layouts**, semantic HTML, and adaptive styling based on screen size.
-
-### Key objectives:
-
-- Implement responsive layout with Flexbox and Grid
-- Handle content overflow elegantly
-- Ensure mobile-first development practices
-- Follow BEM naming conventions and clean project structure
-
----
-
-## Features
-
-- Responsive layout (mobile-first approach)
+- Responsive card grid with interactive "like" buttons
 - Profile section with editable data
-- Card grid with interactive "like" buttons
-- Smoothly scales from 320px to 1280px
-- Hidden text overflow with ellipses
-- Clean semantic HTML structure
+- Adaptive layout from mobile (320px) to desktop (1280px+)
+- Smooth text overflow handling with ellipses
+- Hover states and subtle UI enhancements
+- Fully semantic HTML structure
 
----
+## 🖼 Screenshots / Visual Walkthrough
 
-## Technologies Used
+### Desktop View
 
-- HTML5
-- CSS3
-- Flexbox & CSS Grid
-- Media Queries
-- BEM Methodology
-- Normalize.css
-- Git & GitHub
-- Figma for design reference
+![Desktop](./src/images/desktop.png)
 
----
+### Tablet View
 
-## Responsive Design
+![Tablet](./src/images/tablet.png)
+![Tablet](./src/images/tablet.1.png)
+![Tablet](./src/images/tablet.2.png)
+![Tablet](./src/images/tablet.3.png)
 
-The layout is optimized for 3 main screen widths:
+### Mobile View
+
+![Mobile](./src/images/mobile.png)
+![Mobile](./src/images/mobile.1.png)
+![Mobile](./src/images/mobile.2.png)
+
+Demonstrates responsive behavior, semantic layout, and clean card grid presentation.
+
+## 🛠 Technologies Used
+
+- **HTML5** — Semantic markup
+- **CSS3** — Flexbox, Grid, media queries, animations
+- **BEM methodology** — Modular CSS
+- **Normalize.css** — Cross-browser consistency
+- **Git & GitHub** — Version control
+- **Figma** — Design reference
+
+## 📱 Responsive Design
+
+Optimized for three main screen widths:
 
 | Device  | Width Range      | Layout Description       |
 | ------- | ---------------- | ------------------------ |
-| Mobile  | 320px – \~600px  | Single-column layout     |
-| Tablet  | \~600px – 1024px | Two-column card layout   |
+| Mobile  | 320px – ~600px   | Single-column layout     |
+| Tablet  | ~600px – 1024px  | Two-column card layout   |
 | Desktop | 1024px – 1280px+ | Three-column card layout |
 
-Responsive techniques used:
+**Responsive techniques used:**
 
 - `flex-wrap` and `justify-content` for dynamic alignment
 - `auto-fit` with `minmax()` in Grid layouts
 - Relative units (`%`, `fr`) for flexible spacing
 - `object-fit` to maintain image proportions
 
----
+## ⚙️ Project Setup
 
-## Figma & Design
-
-Design was based on a provided Figma file:
-
-[Open Figma Design](https://www.figma.com/...)
-
-> (Replace with the actual Figma link, if permitted)
-
-Assets such as icons and images were exported from Figma and optimized. All styles (fonts, colors, spacing) were derived from the design file to ensure consistency.
-
----
-
-## Project Setup
-
-Clone the repo and open in your browser:
+Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/se_project_aroundtheus.git
 cd se_project_aroundtheus
 ```
 
-To view locally:
+Open `index.html` in a browser or use DevTools to test responsiveness.
 
-1. Open `index.html` in your browser.
-2. Use DevTools to test different resolutions.
-
----
-
-## File Structure
+## 📂 File Structure
 
 ```
-images/             → All image assets
-pages/              → HTML files (main: index.html)
-blocks/             → Modular BEM-style CSS files
+images/ → All image assets
+pages/ → HTML files (main: index.html)
+blocks/ → Modular BEM-style CSS files
 vendor/
-├── fonts/          → Inter font files
-├── fonts.css       → Font-face declarations
-└── normalize.css   → Reset styles
-index.css           → Main stylesheet (imports all block styles)
+├── fonts/ → Inter font files
+├── fonts.css → Font-face declarations
+└── normalize.css → Reset styles
+index.css → Main stylesheet (imports all block styles)
 README.md
 ```
 
----
+## 🔤 Fonts
 
-## Fonts
+**Primary:** Inter
 
-- Primary font: **Inter**
-- Fallbacks: `Arial, sans-serif`
-- Font files from: [https://rsms.me/inter/](https://rsms.me/inter/)
+**Fallbacks:** Arial, sans-serif
 
-Loaded via local files and declared with `@font-face` in `vendor/fonts.css`.
+**Font files:** https://rsms.me/inter/
 
----
+Loaded via local files and declared in `vendor/fonts.css`.
 
-## Video Walkthrough
+## 🎥 Video Walkthrough
 
-[Watch the walkthrough video](https://drive.google.com/your-shared-link)
+Watch the project tour: Adaptive Web Design Video
 
-> Replace this with your actual cloud video link.
+Covers:
 
-In the video:
-
-- Tour of the layout
-- Explanation of media queries
-- Use of BEM and semantic HTML
+- Layout overview
+- Media query implementation
+- BEM and semantic HTML usage
 - Responsive card behavior
 
----
+## 💡 What I Learned
 
-## What I Learned
+- Creating responsive grids with auto-fit and minmax()
+- Using Flexbox for layout control
+- Managing text overflow with ellipsis
+- Structuring CSS with BEM methodology
+- Semantic HTML and accessibility best practices
+- Extracting design specs from Figma
 
-- Creating responsive grids with `auto-fit` and `minmax()`
-- Effectively using Flexbox for layout control
-- Managing text overflow with `ellipsis`
-- Structuring CSS with the BEM methodology
-- Importance of semantic HTML and accessibility
-- Using Figma to extract design specs
+## 🏁 Conclusion
 
----
+This project demonstrates adaptive, responsive web design across mobile, tablet, and desktop. Users interact with a clean, semantic layout that scales smoothly. Using BEM and mobile-first design ensures maintainability, scalability, and visual consistency — production-ready frontend skills in action.
 
-## Future Improvements
+## 🚀 Future Improvements & Business Impact
 
-- Add interactivity via JavaScript (e.g., modals, form validation)
+- Add JavaScript interactivity (modals, form validation, dynamic likes)
 - Persist user data with localStorage or backend integration
-- Improve accessibility with ARIA roles and landmarks
+- Improve accessibility with ARIA roles and contrast checks
+- Optimize images and assets for performance and SEO
+- Expand into a multi-page gallery or social platform
 
----
+These enhancements could increase engagement, improve discoverability, and support user retention for a photo-sharing web app.
 
-## Credits
+## 🌐 Browser & Performance
 
-- Designed by [TripleTen](https://tripleten.com/)
-- Font by [Rasmus Andersson](https://rsms.me/inter/)
+- Tested across modern browsers
+- Loads quickly and adapts seamlessly across devices
+- No horizontal scrolling at any width
+
+## 🏆 Submission Checklist
+
+- Mobile, tablet, and desktop layouts implemented
+- Follows BEM methodology
+- Fonts and normalize.css included
+- Responsive card grid
+- No horizontal scrolling at any width
+- Deployed on GitHub Pages
+- Walkthrough video recorded and linked
+
+## 👤 Credits
+
+- Designed by TripleTen
+- Font by Rasmus Andersson
 - Figma design provided in curriculum
 
----
-
-## Submission Checklist
-
-- [x] Mobile, tablet, and desktop layouts implemented
-- [x] Follows BEM methodology
-- [x] Fonts and normalize.css included
-- [x] Responsive card grid
-- [x] No horizontal scrolling at any width
-- [x] Deployed on GitHub Pages
-- [x] Walkthrough video recorded and linked
-
----
-
-**Feel free to fork, clone, and explore. Happy coding!**
+## Feel free to fork, clone, and explore. Happy coding!
