@@ -1,11 +1,11 @@
 # 🌎 Around The U.S. — Responsive Web Project
 
 
-![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/se_project_aroundtheus?style=flat-square)
-![Last commit](https://img.shields.io/github/last-commit/yourusername/se_project_aroundtheus?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/yourusername/se_project_aroundtheus?style=flat-square)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/se_project_aroundtheus?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/yourusername/se_project_aroundtheus?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/Jhm323/se_project_aroundtheus?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/Jhm323/se_project_aroundtheus?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/Jhm323/se_project_aroundtheus?style=flat-square)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Jhm323/se_project_aroundtheus?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/Jhm323/se_project_aroundtheus?style=flat-square)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![BEM](https://img.shields.io/badge/BEM-2F2F2F?style=flat-square&logoColor=white)
