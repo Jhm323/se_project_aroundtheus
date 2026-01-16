@@ -40,7 +40,7 @@ The goal of Around The U.S. is to create a fully responsive and visually polishe
 
 ### Desktop View
 
-![Desktop](./src/images/desktop.png)
+![Desktop](../../src/images/desktop.png)
 
 ### Tablet View
 
