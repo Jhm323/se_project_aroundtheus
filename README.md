@@ -1,5 +1,17 @@
 # 🌎 Around The U.S. — Responsive Web Project
 
+
+![GitHub repo size](https://img.shields.io/github/repo-size/yourusername/se_project_aroundtheus?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/yourusername/se_project_aroundtheus?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/yourusername/se_project_aroundtheus?style=flat-square)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/yourusername/se_project_aroundtheus?style=flat-square)
+![GitHub license](https://img.shields.io/github/license/yourusername/se_project_aroundtheus?style=flat-square)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![BEM](https://img.shields.io/badge/BEM-2F2F2F?style=flat-square&logoColor=white)
+![Normalize.css](https://img.shields.io/badge/Normalize.css-7B7B7B?style=flat-square&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-000000?style=flat-square&logo=github&logoColor=white)
+
 This project demonstrates a responsive, adaptive layout using modern HTML and CSS. Users can explore a profile-based photo gallery, like images, and enjoy a seamless experience across devices.
 
 **[View the live project on GitHub Pages](#)**
