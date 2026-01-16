@@ -2,7 +2,7 @@
 
 This project demonstrates a responsive, adaptive layout using modern HTML and CSS. Users can explore a profile-based photo gallery, like images, and enjoy a seamless experience across devices.
 
-**[View the live project on GitHub Pages](#)**
+**[View the live project on GitHub Pages](https://jhm323.github.io/se_project_aroundtheus/)**
 
 ## 🎯 Project Objective
 
